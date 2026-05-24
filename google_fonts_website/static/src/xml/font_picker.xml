@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <!-- Font Picker toolbar widget template -->
+    <t t-name="google_fonts_website.FontPickerToolbar">
+        <span class="gf-separator"/>
+        <span class="gf-font-picker-wrap">
+            <select class="gf-font-select" title="Font Family">
+                <option value="">── Font ──</option>
+                <!-- Sans-Serif -->
+                <optgroup label="Sans-Serif">
+                    <option value="Inter">Inter</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Poppins">Poppins</option>
+                    <option value="Raleway">Raleway</option>
+                    <option value="Nunito">Nunito</option>
+                    <option value="Source Sans 3">Source Sans 3</option>
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Josefin Sans">Josefin Sans</option>
+                    <option value="Oswald">Oswald</option>
+                </optgroup>
+                <!-- Serif -->
+                <optgroup label="Serif">
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Merriweather">Merriweather</option>
+                    <option value="PT Serif">PT Serif</option>
+                    <option value="Georgia">Georgia</option>
+                </optgroup>
+                <!-- Display / Decorative -->
+                <optgroup label="Display">
+                    <option value="Pacifico">Pacifico</option>
+                    <option value="Lobster">Lobster</option>
+                    <option value="Dancing Script">Dancing Script</option>
+                    <option value="Caveat">Caveat</option>
+                </optgroup>
+                <!-- System Fonts -->
+                <optgroup label="System">
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica Neue">Helvetica Neue</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                </optgroup>
+            </select>
+
+            <select class="gf-weight-select" title="Font Weight">
+                <option value="">Weight</option>
+                <option value="100">Thin (100)</option>
+                <option value="200">ExtraLight (200)</option>
+                <option value="300">Light (300)</option>
+                <option value="400">Regular (400)</option>
+                <option value="500">Medium (500)</option>
+                <option value="600">SemiBold (600)</option>
+                <option value="700">Bold (700)</option>
+                <option value="800">ExtraBold (800)</option>
+                <option value="900">Black (900)</option>
+            </select>
+        </span>
+    </t>
+</templates>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.ResponsePanel" owl="1">
+        <div class="apt-response-panel">
+            <!-- Loading State -->
+            <t t-if="props.state.loading">
+                <div class="apt-response-body">
+                    <div class="apt-loading-state">
+                        <div class="apt-spinner"/>
+                        <div class="apt-loading-text">Sending request...</div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- Empty State -->
+            <t t-if="!props.state.response and !props.state.loading">
+                <div class="apt-response-body">
+                    <div class="apt-empty-state">
+                        <div class="apt-empty-icon"><i class="fa fa-paper-plane-o"/></div>
+                        <div class="apt-empty-title">Ready to Test</div>
+                        <div class="apt-empty-subtitle">Enter a URL and click Send to see the response</div>
+                    </div>
+                </div>
+            </t>
+
+            <!-- Response -->
+            <t t-if="props.state.response and !props.state.loading">
+                <!-- Status Bar -->
+                <div class="apt-response-bar">
+                    <span class="apt-response-title">Response</span>
+                    <span t-att-class="'apt-status-badge ' + statusClass">
+                        <t t-esc="props.state.response.status_code"/> <t t-esc="props.state.response.status_text"/>
+                    </span>
+                    <span class="apt-response-meta">
+                        <i class="fa fa-clock-o"/><t t-esc="responseTime"/> ms
+                    </span>
+                    <span class="apt-response-meta">
+                        <i class="fa fa-database"/><t t-esc="responseSize"/>
+                    </span>
+                    <span t-if="props.state.response.server_ip" class="apt-response-meta" style="margin-left: auto;">
+                        <i class="fa fa-server"/>IP: <t t-esc="props.state.response.server_ip"/>
+                    </span>
+                    <button class="apt-save-btn" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 8px;" t-on-click="copyResponse">
+                        <i class="fa fa-copy me-1"/>Copy
+                    </button>
+                </div>
+
+                <!-- Response Tabs -->
+                <div class="apt-response-tabs">
+                    <button class="apt-tab" t-att-class="{'active': props.state.responseTab === 'body'}"
+                            t-on-click="() => props.state.responseTab = 'body'">Body</button>
+                    <button class="apt-tab" t-att-class="{'active': props.state.responseTab === 'headers'}"
+                            t-on-click="() => props.state.responseTab = 'headers'">
+                        Headers<span style="font-size: 0.7rem; color: #94a3b8; margin-left: 4px;">(<t t-esc="responseHeaderEntries.length"/>)</span>
+                    </button>
+                    <button t-if="hasAssertions" class="apt-tab" t-att-class="{'active': props.state.responseTab === 'tests'}"
+                            t-on-click="() => props.state.responseTab = 'tests'">
+                        Tests<span style="font-size: 0.7rem; color: #94a3b8; margin-left: 4px;">(<t t-esc="assertionResults.length"/>)</span>
+                    </button>
+                </div>
+
+                <!-- Response Body -->
+                <div class="apt-response-body">
+                    <!-- Body Tab -->
+                    <div t-if="props.state.responseTab === 'body'">
+                        <t t-if="props.state.response.error">
+                            <div style="padding: 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; color: #991b1b;">
+                                <i class="fa fa-exclamation-triangle me-2"/><strong>Error:</strong> <t t-esc="props.state.response.error"/>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <pre class="apt-code-block"><t t-if="props.state.response.body"><t t-esc="props.state.response.body"/></t><t t-else=""><span style="color: #94a3b8; font-style: italic;">(Empty response body)</span></t></pre>
+                        </t>
+                    </div>
+
+                    <!-- Headers Tab -->
+                    <div t-if="props.state.responseTab === 'headers'">
+                        <t t-foreach="responseHeaderEntries" t-as="header" t-key="header[0]">
+                            <div class="apt-resp-header-row">
+                                <div class="apt-resp-header-key"><t t-esc="header[0]"/></div>
+                                <div class="apt-resp-header-val"><t t-esc="header[1]"/></div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <!-- Tests Tab -->
+                    <div t-if="props.state.responseTab === 'tests'">
+                        <t t-foreach="assertionResults" t-as="a" t-key="a_index">
+                            <div t-att-class="'apt-assertion-item ' + a.status">
+                                <span class="apt-assertion-icon">
+                                    <i t-att-class="'fa ' + (a.status === 'pass' ? 'fa-check-circle text-success' : 'fa-times-circle text-danger')"/>
+                                </span>
+                                <span class="apt-assertion-name"><t t-esc="a.name"/></span>
+                                <span class="apt-assertion-msg"><t t-esc="a.message"/></span>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

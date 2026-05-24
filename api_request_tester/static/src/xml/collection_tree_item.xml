@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.CollectionTreeItem" owl="1">
+        <div class="apt-tree-node">
+            <!-- Node Header -->
+            <div class="apt-tree-header" t-att-class="{'active': props.nodeType === 'item' and props.activeItemId === props.node.id}"
+                 t-att-style="'padding-left: ' + (12 + props.level * 16) + 'px;'"
+                 t-on-click="onSelect">
+
+                <!-- Expand/Collapse icon for folders/collections -->
+                <t t-if="props.nodeType !== 'item'">
+                    <span class="apt-tree-icon">
+                        <i t-att-class="'fa ' + (localState.expanded ? 'fa-chevron-down' : 'fa-chevron-right')"/>
+                    </span>
+                    <span class="apt-tree-icon">
+                        <i t-att-class="'fa ' + icon"/>
+                    </span>
+                </t>
+
+                <!-- Method badge for items -->
+                <t t-if="props.nodeType === 'item'">
+                    <span t-att-class="'method-badge ' + methodClass" style="font-size: 0.6rem; margin-right: 4px;">
+                        <t t-esc="props.node.method"/>
+                    </span>
+                </t>
+
+                <span class="apt-tree-label"><t t-esc="props.node.name"/></span>
+
+                <!-- Action buttons on hover -->
+                <span class="apt-tree-actions">
+                    <button t-if="props.nodeType === 'collection' and props.onDeleteCollection"
+                            class="apt-tree-action-btn" t-on-click="onDeleteClick" title="Delete Collection">
+                        <i class="fa fa-trash-o"/>
+                    </button>
+                    <button t-if="props.nodeType === 'folder' and props.onDeleteFolder"
+                            class="apt-tree-action-btn" t-on-click="onDeleteClick" title="Delete Folder">
+                        <i class="fa fa-trash-o"/>
+                    </button>
+                    <button t-if="props.nodeType === 'item' and props.onDeleteItem"
+                            class="apt-tree-action-btn" t-on-click="onDeleteClick" title="Delete">
+                        <i class="fa fa-trash-o"/>
+                    </button>
+                </span>
+            </div>
+
+            <!-- Children (when expanded) -->
+            <div t-if="localState.expanded and props.nodeType === 'collection'" class="apt-tree-children">
+                <!-- Root-level folders in this collection -->
+                <t t-foreach="getChildFolders(false)" t-as="folder" t-key="folder.id">
+                    <CollectionTreeItem
+                        node="folder"
+                        nodeType="'folder'"
+                        allFolders="props.allFolders"
+                        allItems="props.allItems"
+                        activeItemId="props.activeItemId"
+                        onSelectItem="props.onSelectItem"
+                        onDeleteItem="props.onDeleteItem"
+                        onDeleteFolder="props.onDeleteFolder"
+                        level="props.level + 1"/>
+                </t>
+                <!-- Root-level items (no folder) -->
+                <t t-foreach="getRootItems()" t-as="item" t-key="item.id">
+                    <CollectionTreeItem
+                        node="item"
+                        nodeType="'item'"
+                        allFolders="props.allFolders"
+                        allItems="props.allItems"
+                        activeItemId="props.activeItemId"
+                        onSelectItem="props.onSelectItem"
+                        onDeleteItem="props.onDeleteItem"
+                        level="props.level + 1"/>
+                </t>
+            </div>
+
+            <div t-if="localState.expanded and props.nodeType === 'folder'" class="apt-tree-children">
+                <!-- Sub-folders -->
+                <t t-foreach="getChildFolders(props.node.id)" t-as="folder" t-key="folder.id">
+                    <CollectionTreeItem
+                        node="folder"
+                        nodeType="'folder'"
+                        allFolders="props.allFolders"
+                        allItems="props.allItems"
+                        activeItemId="props.activeItemId"
+                        onSelectItem="props.onSelectItem"
+                        onDeleteItem="props.onDeleteItem"
+                        onDeleteFolder="props.onDeleteFolder"
+                        level="props.level + 1"/>
+                </t>
+                <!-- Items in this folder -->
+                <t t-foreach="getChildItems(props.node.id)" t-as="item" t-key="item.id">
+                    <CollectionTreeItem
+                        node="item"
+                        nodeType="'item'"
+                        allFolders="props.allFolders"
+                        allItems="props.allItems"
+                        activeItemId="props.activeItemId"
+                        onSelectItem="props.onSelectItem"
+                        onDeleteItem="props.onDeleteItem"
+                        level="props.level + 1"/>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

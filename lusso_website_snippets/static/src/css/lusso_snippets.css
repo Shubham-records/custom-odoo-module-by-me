@@ -1,0 +1,1395 @@
+/* ================================================================
+   LUSSO WEBSITE SNIPPETS — lusso_snippets.css
+   Fonts: Playfair Display (display) + DM Sans (body)
+   ================================================================ */
+
+/* ── CSS Custom Properties ────────────────────────────────────── */
+:root {
+  /* Light theme */
+  --lusso-bg-light: #f4f3f0;
+  --lusso-bg-off-white: #fafaf8;
+  --lusso-text-dark: #1a1a18;
+  --lusso-text-mid: #555550;
+  --lusso-text-muted: #888882;
+  --lusso-accent: #1847f0;
+  --lusso-accent-hover: #0f36cc;
+
+  /* Dark theme */
+  --lusso-bg-dark: #0e0e0c;
+  --lusso-bg-dark-mid: #1a1a17;
+  --lusso-text-light: #f0efea;
+  --lusso-text-light-mid: #b0afa8;
+
+  /* Warm theme */
+  --lusso-bg-warm: #f5efe6;
+  --lusso-bg-warm-dark: #e8ddd0;
+  --lusso-accent-warm: #c4622d;
+  --lusso-accent-warm-h: #a8521f;
+
+  /* Forest theme */
+  --lusso-bg-forest: #e8ede6;
+  --lusso-bg-forest-dark: #2d4a30;
+  --lusso-accent-forest: #2d6a35;
+
+  /* Typography */
+  --lusso-font-display: 'Playfair Display', Georgia, serif;
+  --lusso-font-body: 'DM Sans', system-ui, sans-serif;
+  --lusso-font-alt: 'Cormorant Garamond', Georgia, serif;
+
+  /* Spacing */
+  --lusso-section-py: clamp(64px, 8vw, 120px);
+  --lusso-section-px: clamp(20px, 5vw, 80px);
+  --lusso-radius: 12px;
+  --lusso-radius-lg: 20px;
+  --lusso-radius-xl: 32px;
+
+  /* Transitions */
+  --lusso-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --lusso-dur: 0.55s;
+}
+
+/* ── Base resets inside snippets ─────────────────────────────── */
+[data-lusso-snippet] *,
+[data-lusso-snippet] *::before,
+[data-lusso-snippet] *::after {
+  box-sizing: border-box;
+}
+
+[data-lusso-snippet] .container-fluid::before,
+[data-lusso-snippet] .container-fluid::after,
+[data-lusso-snippet] .container::before,
+[data-lusso-snippet] .container::after {
+  display: none !important;
+}
+
+[data-lusso-snippet] {
+  font-family: var(--lusso-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-lusso-snippet] h1,
+[data-lusso-snippet] h2,
+[data-lusso-snippet] h3 {
+  font-family: var(--lusso-font-display);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.05;
+}
+
+[data-lusso-snippet] h1 em,
+[data-lusso-snippet] h2 em,
+[data-lusso-snippet] h3 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+[data-lusso-snippet] p {
+  margin: 0;
+}
+
+/* Image placeholder when src is missing */
+.lusso-img--placeholder {
+  background: linear-gradient(135deg, #e8e5df 0%, #d0ccc3 100%);
+  min-height: 300px;
+}
+
+/* ================================================================
+   SHARED BUTTONS
+   ================================================================ */
+.lusso-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: var(--lusso-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background var(--lusso-dur) var(--lusso-ease),
+    color var(--lusso-dur) var(--lusso-ease),
+    border-color var(--lusso-dur) var(--lusso-ease),
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.lusso-btn:hover {
+  transform: translateY(-2px);
+}
+
+.lusso-btn:active {
+  transform: translateY(0);
+}
+
+.lusso-btn--dark {
+  background: var(--lusso-text-dark);
+  color: #fff;
+  border-color: var(--lusso-text-dark);
+}
+
+.lusso-btn--dark:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.lusso-btn--light {
+  background: var(--lusso-bg-off-white);
+  color: var(--lusso-text-dark);
+  border-color: var(--lusso-bg-off-white);
+}
+
+.lusso-btn--light:hover {
+  background: #fff;
+}
+
+.lusso-btn--ghost {
+  background: transparent;
+  color: var(--lusso-text-dark);
+  border-color: rgba(26, 26, 24, 0.25);
+}
+
+.lusso-btn--ghost:hover {
+  border-color: var(--lusso-text-dark);
+}
+
+.lusso-btn--ghost-light {
+  background: transparent;
+  color: var(--lusso-text-light);
+  border-color: rgba(240, 239, 234, 0.3);
+}
+
+.lusso-btn--ghost-light:hover {
+  border-color: var(--lusso-text-light);
+}
+
+.lusso-btn--warm {
+  background: var(--lusso-accent-warm);
+  color: #fff;
+  border-color: var(--lusso-accent-warm);
+}
+
+.lusso-btn--warm:hover {
+  background: var(--lusso-accent-warm-h);
+  border-color: var(--lusso-accent-warm-h);
+}
+
+.lusso-btn--ghost-warm {
+  background: transparent;
+  color: var(--lusso-accent-warm);
+  border-color: var(--lusso-accent-warm);
+}
+
+.lusso-btn--ghost-warm:hover {
+  background: var(--lusso-accent-warm);
+  color: #fff;
+}
+
+.lusso-btn--forest {
+  background: var(--lusso-accent-forest);
+  color: #fff;
+  border-color: var(--lusso-accent-forest);
+}
+
+.lusso-btn--forest:hover {
+  filter: brightness(1.1);
+}
+
+.lusso-btn--ghost-forest {
+  background: transparent;
+  color: var(--lusso-accent-forest);
+  border-color: var(--lusso-accent-forest);
+}
+
+.lusso-btn--ghost-forest:hover {
+  background: var(--lusso-accent-forest);
+  color: #fff;
+}
+
+.lusso-btn__play {
+  font-size: 10px;
+}
+
+.lusso-link-arrow {
+  font-family: var(--lusso-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lusso-text-dark);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+
+.lusso-link-arrow:hover {
+  opacity: 0.6;
+}
+
+.lusso-link-arrow--light {
+  color: var(--lusso-text-light);
+}
+
+/* ================================================================
+   NOISE TEXTURE overlay
+   ================================================================ */
+.lusso-hero__noise,
+.lusso-craft__noise,
+.lusso-newsletter__noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  z-index: 1;
+  opacity: 0.06;
+}
+
+/* ================================================================
+   HERO SECTION
+   ================================================================ */
+.lusso-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--lusso-section-py) var(--lusso-section-px);
+}
+
+.lusso-hero--light {
+  background: var(--lusso-bg-light);
+}
+
+.lusso-hero--dark {
+  background: var(--lusso-bg-dark);
+}
+
+.lusso-hero--warm {
+  background: var(--lusso-bg-warm);
+}
+
+.lusso-hero--forest {
+  background: var(--lusso-bg-forest);
+}
+
+.lusso-hero__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(32px, 5vw, 80px);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.lusso-hero__content,
+.lusso-hero__media {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.lusso-hero__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lusso-accent);
+  margin-bottom: 20px;
+}
+
+.lusso-hero--dark .lusso-hero__eyebrow {
+  color: rgba(240, 239, 234, 0.6);
+}
+
+.lusso-hero--warm .lusso-hero__eyebrow {
+  color: var(--lusso-accent-warm);
+}
+
+.lusso-hero--forest .lusso-hero__eyebrow {
+  color: var(--lusso-accent-forest);
+}
+
+.lusso-hero__title {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(42px, 6vw, 88px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--lusso-text-dark);
+  margin-bottom: 24px;
+}
+
+.lusso-hero--dark .lusso-hero__title {
+  color: var(--lusso-text-light);
+}
+
+.lusso-hero--warm .lusso-hero__title {
+  color: #3a2a1e;
+}
+
+.lusso-hero--forest .lusso-hero__title {
+  color: #1e3020;
+}
+
+.lusso-hero__sub {
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.7;
+  color: var(--lusso-text-mid);
+  max-width: 380px;
+  margin-bottom: 36px;
+}
+
+.lusso-hero--dark .lusso-hero__sub {
+  color: var(--lusso-text-light-mid);
+}
+
+.lusso-hero--warm .lusso-hero__sub {
+  color: #7a5c44;
+}
+
+.lusso-hero--forest .lusso-hero__sub {
+  color: #3e5a42;
+}
+
+.lusso-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.lusso-hero__press {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.lusso-hero__press-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lusso-text-muted);
+}
+
+.lusso-hero__press-logo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--lusso-text-muted);
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+/* Hero image */
+.lusso-hero__image-wrap {
+  position: relative;
+  border-radius: var(--lusso-radius-xl);
+  overflow: visible;
+}
+
+.lusso-hero__image-wrap--dark {
+  background: var(--lusso-bg-dark-mid);
+  border-radius: var(--lusso-radius-xl);
+}
+
+.lusso-hero__image-wrap--warm {
+  background: var(--lusso-bg-warm-dark);
+  border-radius: var(--lusso-radius-xl);
+}
+
+.lusso-hero__image-wrap--forest {
+  background: #d0dccf;
+  border-radius: var(--lusso-radius-xl);
+}
+
+.lusso-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--lusso-radius-xl);
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  transition: transform 0.8s var(--lusso-ease);
+}
+
+.lusso-hero__image-wrap:hover .lusso-hero__image {
+  transform: scale(1.03);
+}
+
+/* New-arrival tag */
+.lusso-hero__tag {
+  position: absolute;
+  bottom: 24px;
+  right: -20px;
+  background: #fff;
+  border-radius: var(--lusso-radius);
+  padding: 14px 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 180px;
+}
+
+.lusso-hero__tag--dark {
+  background: var(--lusso-bg-dark-mid);
+}
+
+.lusso-hero__tag--warm {
+  background: #fff8f2;
+}
+
+.lusso-hero__tag--forest {
+  background: #f0f5ef;
+}
+
+.lusso-hero__tag-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lusso-accent);
+}
+
+.lusso-hero__tag--dark .lusso-hero__tag-label {
+  color: rgba(240, 239, 234, 0.5);
+}
+
+.lusso-hero__tag--warm .lusso-hero__tag-label {
+  color: var(--lusso-accent-warm);
+}
+
+.lusso-hero__tag--forest .lusso-hero__tag-label {
+  color: var(--lusso-accent-forest);
+}
+
+.lusso-hero__tag-name {
+  font-family: var(--lusso-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--lusso-text-dark);
+}
+
+.lusso-hero__tag--dark .lusso-hero__tag-name {
+  color: var(--lusso-text-light);
+}
+
+.lusso-hero__tag-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lusso-accent);
+}
+
+.lusso-hero__tag--warm .lusso-hero__tag-price {
+  color: var(--lusso-accent-warm);
+}
+
+.lusso-hero__tag--forest .lusso-hero__tag-price {
+  color: var(--lusso-accent-forest);
+}
+
+/* ================================================================
+   COLLECTIONS
+   ================================================================ */
+.lusso-collections {
+  padding: var(--lusso-section-py) var(--lusso-section-px);
+  width: 100%;
+}
+
+.lusso-collections--light {
+  background: var(--lusso-bg-off-white);
+}
+
+.lusso-collections--dark {
+  background: var(--lusso-bg-dark);
+}
+
+.lusso-collections__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  max-width: 1400px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.lusso-collections__heading h2 {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--lusso-text-dark);
+  margin-bottom: 6px;
+}
+
+.lusso-collections--dark .lusso-collections__heading h2 {
+  color: var(--lusso-text-light);
+}
+
+.lusso-collections__heading p {
+  font-size: 14px;
+  color: var(--lusso-text-muted);
+}
+
+.lusso-collections--dark .lusso-collections__heading p {
+  color: var(--lusso-text-light-mid);
+}
+
+.lusso-collections__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+.lusso-collections__item {
+  flex: 1 1 calc(33.333% - 16px);
+  min-width: 250px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+}
+
+.lusso-collections__thumb {
+  border-radius: var(--lusso-radius-lg);
+  overflow: hidden;
+  position: relative;
+  background: #ddd;
+}
+
+.lusso-collections__thumb img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--lusso-ease);
+}
+
+.lusso-collections__item--tall .lusso-collections__thumb img {
+  aspect-ratio: 2/3;
+}
+
+.lusso-collections__item:hover .lusso-collections__thumb img {
+  transform: scale(1.05);
+}
+
+.lusso-collections__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+  border-radius: var(--lusso-radius-lg);
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.lusso-collections__item:hover .lusso-collections__overlay {
+  opacity: 1;
+}
+
+.lusso-collections__info {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lusso-collections__name {
+  font-family: var(--lusso-font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--lusso-text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lusso-collections--dark .lusso-collections__name {
+  color: var(--lusso-text-light);
+}
+
+.lusso-collections__arrow {
+  font-size: 14px;
+  transition: transform 0.3s var(--lusso-ease);
+}
+
+.lusso-collections__item:hover .lusso-collections__arrow {
+  transform: translate(3px, -3px);
+}
+
+.lusso-collections__sub {
+  font-size: 12px;
+  color: var(--lusso-text-muted);
+}
+
+.lusso-collections--dark .lusso-collections__sub {
+  color: var(--lusso-text-light-mid);
+}
+
+.lusso-collections__count {
+  font-size: 12px;
+  color: var(--lusso-text-light-mid);
+  margin-top: 2px;
+}
+
+/* Dark card variant */
+.lusso-collections__item--card-dark {
+  flex: 1 1 calc(25% - 16px);
+}
+
+.lusso-collections__item--card-dark .lusso-collections__thumb img {
+  aspect-ratio: 1/1;
+}
+
+/* ================================================================
+   CRAFTSMANSHIP
+   ================================================================ */
+.lusso-craft {
+  padding: var(--lusso-section-py) var(--lusso-section-px);
+  position: relative;
+  overflow: hidden;
+}
+
+.lusso-craft--light {
+  background: var(--lusso-bg-light);
+}
+
+.lusso-craft--dark {
+  background: var(--lusso-bg-dark);
+}
+
+.lusso-craft__layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.lusso-craft__layout--reversed>*:first-child {
+  order: 2;
+}
+
+.lusso-craft__layout--reversed>*:last-child {
+  order: 1;
+}
+
+.lusso-craft__layout>* {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.lusso-craft__eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lusso-accent);
+  margin-bottom: 16px;
+}
+
+.lusso-craft__eyebrow--dark {
+  color: rgba(240, 239, 234, 0.5);
+}
+
+.lusso-craft__title {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(36px, 4.5vw, 64px);
+  color: var(--lusso-text-dark);
+  margin-bottom: 24px;
+}
+
+.lusso-craft__title--dark {
+  color: var(--lusso-text-light);
+}
+
+.lusso-craft__body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--lusso-text-mid);
+  max-width: 460px;
+  margin-bottom: 36px;
+}
+
+.lusso-craft__body--dark {
+  color: var(--lusso-text-light-mid);
+}
+
+.lusso-craft__pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.lusso-craft__pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.lusso-craft__pillar-icon {
+  font-size: 22px;
+}
+
+.lusso-craft__pillar strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lusso-text-dark);
+  margin-bottom: 3px;
+}
+
+.lusso-craft__pillar p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lusso-text-muted);
+}
+
+/* Craft images */
+.lusso-craft__images {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.lusso-craft__img-main {
+  width: 100%;
+  border-radius: var(--lusso-radius-lg);
+  overflow: hidden;
+  background: #ddd;
+}
+
+.lusso-craft__img-main img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--lusso-ease);
+}
+
+.lusso-craft__img-main:hover img {
+  transform: scale(1.04);
+}
+
+.lusso-craft__img-accent {
+  flex: 1 1 calc(50% - 12px);
+  border-radius: var(--lusso-radius);
+  overflow: hidden;
+  background: #ddd;
+}
+
+.lusso-craft__img-accent img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+.lusso-craft__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lusso-craft__stats--dark .lusso-craft__stat {
+  flex: 1 1 calc(50% - 16px);
+  background: var(--lusso-bg-dark-mid);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lusso-craft__stat {
+  flex: 1 1 calc(50% - 16px);
+  background: #fff;
+  border-radius: var(--lusso-radius);
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.lusso-craft__stat-num {
+  display: block;
+  font-family: var(--lusso-font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--lusso-text-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.lusso-craft__stats--dark .lusso-craft__stat-num {
+  color: var(--lusso-text-light);
+}
+
+.lusso-craft__stat span {
+  font-size: 12px;
+  color: var(--lusso-text-muted);
+}
+
+.lusso-craft__stats--dark .lusso-craft__stat span {
+  color: var(--lusso-text-light-mid);
+}
+
+/* ================================================================
+   STATS BANNER
+   ================================================================ */
+.lusso-stats {
+  padding: clamp(48px, 6vw, 80px) var(--lusso-section-px);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.lusso-stats--light {
+  background: var(--lusso-bg-off-white);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+.lusso-stats--dark {
+  background: var(--lusso-bg-dark-mid);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.lusso-stats__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lusso-stats__grid>* {
+  flex: 1 1 calc(25% - 32px);
+  min-width: 120px;
+}
+
+.lusso-stats__num {
+  display: block;
+  font-family: var(--lusso-font-display);
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 700;
+  color: var(--lusso-text-dark);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.lusso-stats--dark .lusso-stats__grid>* {
+  flex: 1 1 calc(25% - 32px);
+  min-width: 120px;
+}
+
+.lusso-stats__num {
+  color: var(--lusso-text-light);
+}
+
+.lusso-stats__label {
+  font-size: 13px;
+  color: var(--lusso-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.lusso-stats--dark .lusso-stats__label {
+  color: var(--lusso-text-light-mid);
+}
+
+/* ================================================================
+   PRODUCTS SCROLL
+   ================================================================ */
+.lusso-products {
+  padding-top: var(--lusso-section-py);
+  padding-bottom: var(--lusso-section-py);
+  background: var(--lusso-bg-off-white);
+  overflow: hidden;
+}
+
+.lusso-products__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--lusso-section-px);
+}
+
+.lusso-products__header h2 {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(28px, 3.5vw, 48px);
+  color: var(--lusso-text-dark);
+}
+
+.lusso-products__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.lusso-products__nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.lusso-products__nav-btn:hover {
+  background: var(--lusso-text-dark);
+  color: #fff;
+  border-color: var(--lusso-text-dark);
+}
+
+.lusso-products__track-wrap {
+  overflow: hidden;
+  padding-inline: var(--lusso-section-px);
+}
+
+.lusso-products__track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s var(--lusso-ease);
+}
+
+.lusso-products__card {
+  flex: 0 0 280px;
+  cursor: pointer;
+}
+
+.lusso-products__img {
+  border-radius: var(--lusso-radius-lg);
+  overflow: hidden;
+  position: relative;
+  background: #e8e5df;
+}
+
+.lusso-products__img img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--lusso-ease);
+}
+
+.lusso-products__card:hover .lusso-products__img img {
+  transform: scale(1.05);
+}
+
+.lusso-products__wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.lusso-products__card:hover .lusso-products__wishlist {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lusso-products__wishlist:hover {
+  background: #fff;
+  transform: scale(1.1) !important;
+}
+
+.lusso-products__meta {
+  margin-top: 14px;
+}
+
+.lusso-products__name {
+  display: block;
+  font-family: var(--lusso-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lusso-text-dark);
+  margin-bottom: 4px;
+}
+
+.lusso-products__price {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lusso-text-mid);
+}
+
+/* ================================================================
+   TESTIMONIALS
+   ================================================================ */
+.lusso-testimonials {
+  padding: var(--lusso-section-py) var(--lusso-section-px);
+}
+
+.lusso-testimonials--light {
+  background: var(--lusso-bg-light);
+}
+
+.lusso-testimonials__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.lusso-testimonials__header h2 {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(28px, 3.5vw, 48px);
+  color: var(--lusso-text-dark);
+}
+
+.lusso-testimonials__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lusso-testimonials__card {
+  flex: 1 1 calc(33.333% - 24px);
+  min-width: 280px;
+  background: #fff;
+  border-radius: var(--lusso-radius-lg);
+  padding: 32px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.lusso-testimonials__card:hover {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.lusso-testimonials__stars {
+  color: #f4b942;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.lusso-testimonials__quote {
+  font-family: var(--lusso-font-alt);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--lusso-text-mid);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.lusso-testimonials__author strong {
+  display: block;
+  font-family: var(--lusso-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lusso-text-dark);
+  margin-bottom: 2px;
+}
+
+.lusso-testimonials__author span {
+  font-size: 12px;
+  color: var(--lusso-text-muted);
+}
+
+/* ================================================================
+   NEWSLETTER
+   ================================================================ */
+.lusso-newsletter {
+  padding: var(--lusso-section-py) var(--lusso-section-px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.lusso-newsletter--light {
+  background: var(--lusso-bg-light);
+}
+
+.lusso-newsletter--dark {
+  background: var(--lusso-bg-dark);
+}
+
+.lusso-newsletter--warm-split {
+  padding: 0;
+  text-align: left;
+}
+
+.lusso-newsletter__wrap {
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.lusso-newsletter__eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lusso-accent);
+  margin-bottom: 16px;
+}
+
+.lusso-newsletter__eyebrow--dark {
+  color: rgba(240, 239, 234, 0.4);
+}
+
+.lusso-newsletter__title {
+  font-family: var(--lusso-font-display);
+  font-size: clamp(32px, 4vw, 56px);
+  color: var(--lusso-text-dark);
+  margin-bottom: 16px;
+  line-height: 1.05;
+}
+
+.lusso-newsletter__title--dark {
+  color: var(--lusso-text-light);
+}
+
+.lusso-newsletter__sub {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--lusso-text-mid);
+  margin-bottom: 32px;
+}
+
+.lusso-newsletter__sub--dark {
+  color: var(--lusso-text-light-mid);
+}
+
+.lusso-newsletter__form {
+  display: flex;
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto 16px;
+}
+
+.lusso-newsletter__form--stacked {
+  flex-direction: column;
+  margin: 0 0 16px;
+}
+
+.lusso-newsletter__form--dark {
+  max-width: 440px;
+}
+
+.lusso-newsletter__input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background: #fff;
+  font-family: var(--lusso-font-body);
+  font-size: 14px;
+  color: var(--lusso-text-dark);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.lusso-newsletter__input:focus {
+  border-color: var(--lusso-accent);
+}
+
+.lusso-newsletter__input--dark {
+  background: var(--lusso-bg-dark-mid);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--lusso-text-light);
+}
+
+.lusso-newsletter__input--dark::placeholder {
+  color: rgba(240, 239, 234, 0.3);
+}
+
+.lusso-newsletter__input--warm {
+  border-color: rgba(196, 98, 45, 0.2);
+}
+
+.lusso-newsletter__input--warm:focus {
+  border-color: var(--lusso-accent-warm);
+}
+
+.lusso-newsletter__legal {
+  font-size: 11px;
+  color: var(--lusso-text-muted);
+}
+
+.lusso-newsletter__legal a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Warm split layout */
+.lusso-newsletter__split {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 480px;
+}
+
+.lusso-newsletter__split-left,
+.lusso-newsletter__split-right {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.lusso-newsletter__split-left {
+  overflow: hidden;
+  background: #e0d5c8;
+}
+
+.lusso-newsletter__split-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--lusso-ease);
+}
+
+.lusso-newsletter__split-left:hover img {
+  transform: scale(1.04);
+}
+
+.lusso-newsletter__split-right {
+  background: var(--lusso-bg-warm);
+  padding: clamp(40px, 6vw, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lusso-newsletter__split-right .lusso-newsletter__title {
+  font-size: clamp(28px, 3.5vw, 48px);
+}
+
+.lusso-newsletter__split-right .lusso-newsletter__form {
+  margin: 0 0 16px;
+}
+
+/* ================================================================
+   MARQUEE TICKER
+   ================================================================ */
+.lusso-marquee {
+  background: var(--lusso-text-dark);
+  padding: 18px 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.lusso-marquee__track {
+  overflow: hidden;
+}
+
+.lusso-marquee__inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.lusso-marquee__inner span {
+  font-family: var(--lusso-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(240, 239, 234, 0.85);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.lusso-marquee__dot {
+  color: rgba(240, 239, 234, 0.3) !important;
+  font-size: 8px !important;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================================ */
+@media (max-width: 767px) {
+  .lusso-hero__inner {}
+
+  .lusso-hero__media {
+    order: -1;
+  }
+
+  .lusso-hero__tag {
+    right: 16px;
+  }
+
+  .lusso-craft__layout {}
+
+  .lusso-craft__layout--reversed>* {
+    order: unset !important;
+  }
+
+
+
+  .lusso-stats__grid {}
+
+  .lusso-testimonials__grid {}
+
+  .lusso-newsletter__split {}
+
+  .lusso-newsletter__split-left,
+  .lusso-newsletter__split-right {
+    flex: 1 1 400px;
+    min-width: 0;
+  }
+
+  .lusso-newsletter__split-left {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lusso-collections__grid {
+
+    gap: 10px;
+  }
+
+  .lusso-stats__grid {}
+
+  .lusso-testimonials__grid {}
+
+  .lusso-newsletter__form {
+    flex-direction: column;
+  }
+
+  .lusso-craft__images {}
+
+  .lusso-craft__img-main {}
+}
+
+@media (max-width: 480px) {
+  .lusso-collections__grid {}
+
+  .lusso-hero__title {
+    font-size: 38px;
+  }
+}
+
+/* ================================================================
+   GSAP INITIAL STATES
+   (Handled via gsap.fromTo() in JS, preventing blank blocks in Odoo Editor)
+   ================================================================ */
+/* When GSAP is done / JS-disabled fallback */
+.lusso-animated {
+  opacity: 1 !important;
+  transform: none !important;
+}

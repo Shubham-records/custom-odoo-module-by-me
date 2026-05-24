@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.AuthEditor" owl="1">
+        <div>
+            <div class="apt-auth-form">
+                <div class="apt-auth-field">
+                    <label>Authorization Type</label>
+                    <select t-on-change="onAuthTypeChange">
+                        <t t-foreach="authTypes" t-as="at" t-key="at.value">
+                            <option t-att-value="at.value" t-att-selected="props.state.authType === at.value">
+                                <t t-esc="at.label"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+
+                <!-- No Auth -->
+                <div t-if="props.state.authType === 'none'" class="text-muted" style="padding: 24px 0; font-size: 0.85rem;">
+                    <i class="fa fa-unlock me-2"/>This request does not use any authorization.
+                </div>
+
+                <!-- Bearer Token -->
+                <div t-if="props.state.authType === 'bearer'">
+                    <div class="apt-auth-field">
+                        <label>Token</label>
+                        <input type="text" t-att-value="props.state.authConfig.token || ''"
+                               t-on-input="(ev) => this.setAuthConfig('token', ev)"
+                               placeholder="Paste your token here"/>
+                        <div class="apt-auth-hint">
+                            <i class="fa fa-info-circle me-1"/>Will add <code>Authorization: Bearer &lt;token&gt;</code> header automatically.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Auth -->
+                <div t-if="props.state.authType === 'basic'">
+                    <div class="apt-auth-field">
+                        <label>Username</label>
+                        <input type="text" t-att-value="props.state.authConfig.username || ''"
+                               t-on-input="(ev) => this.setAuthConfig('username', ev)"
+                               placeholder="Username"/>
+                    </div>
+                    <div class="apt-auth-field">
+                        <label>Password</label>
+                        <input type="password" t-att-value="props.state.authConfig.password || ''"
+                               t-on-input="(ev) => this.setAuthConfig('password', ev)"
+                               placeholder="Password"/>
+                        <div class="apt-auth-hint">
+                            <i class="fa fa-info-circle me-1"/>Will add <code>Authorization: Basic &lt;base64&gt;</code> header automatically.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Key -->
+                <div t-if="props.state.authType === 'api_key'">
+                    <div class="apt-auth-field">
+                        <label>Key Name</label>
+                        <input type="text" t-att-value="props.state.authConfig.key || ''"
+                               t-on-input="(ev) => this.setAuthConfig('key', ev)"
+                               placeholder="e.g. X-API-Key"/>
+                    </div>
+                    <div class="apt-auth-field">
+                        <label>Value</label>
+                        <input type="text" t-att-value="props.state.authConfig.value || ''"
+                               t-on-input="(ev) => this.setAuthConfig('value', ev)"
+                               placeholder="Your API key value"/>
+                    </div>
+                    <div class="apt-auth-field">
+                        <label>Add to</label>
+                        <select t-on-change="(ev) => this.setAuthConfig('add_to', ev)">
+                            <option value="header" t-att-selected="(props.state.authConfig.add_to || 'header') === 'header'">Header</option>
+                            <option value="query" t-att-selected="props.state.authConfig.add_to === 'query'">Query Params</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

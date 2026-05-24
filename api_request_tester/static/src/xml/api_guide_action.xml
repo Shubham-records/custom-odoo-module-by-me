@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.Guide" owl="1">
+        <div class="apt-guide-container" style="display: flex; height: 100vh; background: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif;">
+            <!-- Left Sidebar Guide Nav -->
+            <div class="apt-guide-sidebar" style="width: 280px; background: #ffffff; border-right: 1px solid #e2e8f0; padding: 24px 16px; display: flex; flex-direction: column; gap: 20px; box-shadow: 2px 0 8px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px;">
+                    <div style="background: linear-gradient(135deg, #4f46e5, #8b5cf6); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);">
+                        <i class="fa fa-book" style="font-size: 1rem; color: white;"/>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; color: #1e293b;">User Guide</div>
+                        <div style="font-size: 0.7rem; color: #64748b;">API Tester Pro</div>
+                    </div>
+                </div>
+
+                <div style="height: 1px; background: #e2e8f0;"/>
+
+                <div class="apt-guide-nav" style="display: flex; flex-direction: column; gap: 6px; flex: 1; overflow-y: auto;">
+                    <button t-on-click="() => this.setSection('getting-started')" 
+                            t-att-style="state.activeSection === 'getting-started' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-rocket" style="font-size: 0.95rem; width: 18px;"/>
+                        Getting Started
+                    </button>
+                    
+                    <button t-on-click="() => this.setSection('curl-import')" 
+                            t-att-style="state.activeSection === 'curl-import' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-terminal" style="font-size: 0.95rem; width: 18px;"/>
+                        cURL Paste Import
+                    </button>
+
+                    <button t-on-click="() => this.setSection('collections-sharing')" 
+                            t-att-style="state.activeSection === 'collections-sharing' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-users" style="font-size: 0.95rem; width: 18px;"/>
+                        Collections &amp; Sharing
+                    </button>
+
+                    <button t-on-click="() => this.setSection('auth-headers')" 
+                            t-att-style="state.activeSection === 'auth-headers' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-lock" style="font-size: 0.95rem; width: 18px;"/>
+                        Auth &amp; Headers
+                    </button>
+
+                    <button t-on-click="() => this.setSection('body-formats')" 
+                            t-att-style="state.activeSection === 'body-formats' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-file-code-o" style="font-size: 0.95rem; width: 18px;"/>
+                        Body &amp; Payloads
+                    </button>
+
+                    <button t-on-click="() => this.setSection('environments-assertions')" 
+                            t-att-style="state.activeSection === 'environments-assertions' ? 'background: rgba(79, 70, 229, 0.06); color: #4f46e5; border-left: 3px solid #4f46e5;' : 'color: #475569; border-left: 3px solid transparent;'"
+                            style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: none; border: none; border-radius: 0 6px 6px 0; text-align: left; transition: all 0.2s; font-size: 0.85rem; font-weight: 500;">
+                        <i class="fa fa-cubes" style="font-size: 0.95rem; width: 18px;"/>
+                        Environments &amp; Tests
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="apt-guide-content" style="flex: 1; padding: 40px; overflow-y: auto; background: #f8fafc;">
+                <!-- Getting Started -->
+                <t t-if="state.activeSection === 'getting-started'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(79, 70, 229, 0.08); color: #4f46e5; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">GUIDE OVERVIEW</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Getting Started with API Tester Pro</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Explore Odoo's most powerful, full-featured developer utility. Test API endpoints, simulate client workflows, and collaborate with your team without leaving your ERP workspace.</p>
+                        </div>
+
+                        <!-- Core Features Overview Grid -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="color: #0284c7; font-size: 1.25rem;"><i class="fa fa-cloud-upload"/></div>
+                                <div style="font-weight: 600; font-size: 0.95rem; color: #1e293b;">Send Requests Securely</div>
+                                <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">Execute REST API requests using standard verbs like GET, POST, PUT, DELETE, PATCH, and HEAD directly from your Odoo server IP.</div>
+                            </div>
+                            
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="color: #db2777; font-size: 1.25rem;"><i class="fa fa-clock-o"/></div>
+                                <div style="font-weight: 600; font-size: 0.95rem; color: #1e293b;">Automatic Execution Logs</div>
+                                <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">Never lose a test. The system automatically maintains a historical timeline of all runs with real-time logs, statuses, and performance timings.</div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Walkthrough Card -->
+                        <div style="background: linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%); border: 1px solid rgba(79, 70, 229, 0.15); border-radius: 12px; padding: 24px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02);">
+                            <h3 style="font-weight: 700; font-size: 1.1rem; color: #4f46e5; display: flex; align-items: center; gap: 8px;">
+                                <i class="fa fa-map-o"/> Your First API Call
+                            </h3>
+                            <ol style="margin-top: 14px; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #334155; line-height: 1.6;">
+                                <li>Switch to the <strong>Tester</strong> menu on Odoo's top header.</li>
+                                <li>Choose an HTTP method (e.g. <code>GET</code>) from the dropdown next to the URL input.</li>
+                                <li>Type or paste your target URL (such as a mock REST endpoint).</li>
+                                <li>Click the vibrant violet <strong>Send</strong> button. The server will run the call and load response headers, body, size, and timings instantly.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- cURL Paste Import -->
+                <t t-if="state.activeSection === 'curl-import'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(139, 92, 246, 0.08); color: #7c3aed; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">SMART ENGINE</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Instant cURL Paste Import</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Quickly import endpoints from Postman, Chrome DevTools, or terminal commands by pasting raw cURL expressions.</p>
+                        </div>
+
+                        <!-- Info Grid -->
+                        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                            <h4 style="font-weight: 600; font-size: 1rem; color: #1e293b;">How it Works:</h4>
+                            <div style="font-size: 0.85rem; color: #334155; line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display: flex; gap: 12px; align-items: center;">
+                                    <div style="background: #7c3aed; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.75rem;">1</div>
+                                    <div>Copy any raw cURL command (e.g. <code>curl --location 'https://api.com' ...</code>).</div>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: center;">
+                                    <div style="background: #7c3aed; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.75rem;">2</div>
+                                    <div>Select the main URL input bar in the <strong>Tester</strong> workspace.</div>
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: center;">
+                                    <div style="background: #7c3aed; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.75rem;">3</div>
+                                    <div>Paste the copied text directly into the input bar using <code>Ctrl+V</code> (or <code>Cmd+V</code>).</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 0.78rem; color: #0f172a; line-height: 1.5; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                            <span style="color: #64748b;"># Example Paste Support:</span><br/>
+                            curl --location 'https://auth.dev.com/token' \<br/>
+                            --header 'Content-Type: application/x-www-form-urlencoded' \<br/>
+                            --data-urlencode 'grant_type=client_credentials' \<br/>
+                            --data-urlencode 'client_id=my_client_id'
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Collections & Sharing -->
+                <t t-if="state.activeSection === 'collections-sharing'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(2, 132, 199, 0.08); color: #0284c7; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">COLLABORATIVE WORKSPACE</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Collections, Folders, &amp; Team Sharing</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Organize saved API requests into structured directories, nest folders recursively, and easily collaborate across your engineering team.</p>
+                        </div>
+
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <!-- M2M Sharing -->
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="color: #0284c7; font-size: 1.25rem;"><i class="fa fa-share-alt"/></div>
+                                <div style="font-weight: 600; font-size: 0.95rem; color: #1e293b;">Granular Team Sharing</div>
+                                <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">Navigate to standard Odoo collection list/form views. Add users to the <strong>Shared Users</strong> list to instantly grant them CRUD permissions inside the shared workspace.</div>
+                            </div>
+                            
+                            <!-- Path Breadcrumbs -->
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="color: #10b981; font-size: 1.25rem;"><i class="fa fa-folder-open-o"/></div>
+                                <div style="font-weight: 600; font-size: 0.95rem; color: #1e293b;">Clear Attribution</div>
+                                <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">Shared collections explicitly append the creator's username (e.g. <code>MarketingSuite by Admin</code>) so you always know who created or shared the test set.</div>
+                            </div>
+                        </div>
+
+                        <!-- Cascade Archiving -->
+                        <div style="background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15); border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.01);">
+                            <h4 style="font-weight: 700; font-size: 0.95rem; color: #ef4444; display: flex; align-items: center; gap: 8px;">
+                                <i class="fa fa-trash-o"/> Deleted Request Cascading (History Preservation)
+                            </h4>
+                            <p style="font-size: 0.8rem; color: #475569; line-height: 1.6; margin-top: 8px;">When you delete an active request (saved curl) from the tree hierarchy, Odoo automatically protects historical logs by keeping them separated. Instead of being permanently unlinked, the history logs generated from that request are cleanly moved to archives (<code>active=False</code>) for structural reporting.</p>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Auth & Headers -->
+                <t t-if="state.activeSection === 'auth-headers'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(219, 39, 119, 0.08); color: #db2777; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">SECURITY &amp; CONFIGURATION</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Authentication Managers &amp; Headers</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Configure request headers and access mechanisms easily inside active profiles.</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <!-- Bearer -->
+                            <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; align-items: flex-start; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="background: #db2777; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-key" style="color: white;"/></div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 0.9rem; color: #db2777;">Bearer Token Manager</div>
+                                    <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5; margin-top: 4px;">Inject standard JSON Web Tokens (JWT) or OAuth bearer credentials. They will automatically be attached to the request's authorization header payload.</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Basic Auth -->
+                            <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; align-items: flex-start; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="background: #2563eb; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-user" style="color: white;"/></div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 0.9rem; color: #2563eb;">Basic Username &amp; Password Auth</div>
+                                    <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5; margin-top: 4px;">Enter raw username and password credentials. The client automatically base64-encodes these fields to output standard header attributes.</div>
+                                </div>
+                            </div>
+
+                            <!-- API Key -->
+                            <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; align-items: flex-start; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="background: #10b981; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><i class="fa fa-shield" style="color: white;"/></div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 0.9rem; color: #10b981;">Custom API Key</div>
+                                    <div style="font-size: 0.8rem; color: #64748b; line-height: 1.5; margin-top: 4px;">Inject custom security keys into specified request target elements, such as customized request headers or URL query string parameters.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Body Formats -->
+                <t t-if="state.activeSection === 'body-formats'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(16, 185, 129, 0.08); color: #10b981; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">DATA PAYLOADS</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Body Formats &amp; Content Types</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Transmit structured payload content types in standard formats. The system supports full dynamic editors.</p>
+                        </div>
+
+                        <!-- Body types grid -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #10b981;">JSON (Application/JSON)</div>
+                                <div style="font-size: 0.78rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Compose rich JSON payloads using standard keys and arrays. Includes validation checks to avoid sending malformed JSON strings.</div>
+                            </div>
+                            
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #10b981;">GraphQL Support</div>
+                                <div style="font-size: 0.78rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Input raw GraphQL query structures accompanied by a separate query variables block to retrieve modern graph-based entities.</div>
+                            </div>
+
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #10b981;">Form Data (Key-Value Grid)</div>
+                                <div style="font-size: 0.78rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Simulate HTML form submissions. Ideal for testing multipart body structures and key-value uploads.</div>
+                            </div>
+
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 18px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #10b981;">URL-Encoded Form</div>
+                                <div style="font-size: 0.78rem; color: #64748b; line-height: 1.5; margin-top: 6px;">Compose payloads as key-value pairs that automatically compile into standard <code>x-www-form-urlencoded</code> structures.</div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Environments & Assertions -->
+                <t t-if="state.activeSection === 'environments-assertions'">
+                    <div style="max-width: 800px; display: flex; flex-direction: column; gap: 24px;">
+                        <div>
+                            <span class="badge" style="background: rgba(245, 158, 11, 0.08); color: #d97706; font-size: 0.75rem; padding: 6px 12px; border-radius: 20px; font-weight: 600;">AUTOMATION &amp; SCOPES</span>
+                            <h1 style="font-size: 2.2rem; font-weight: 800; margin-top: 10px; color: #0f172a;">Variables &amp; Automated Assertions</h1>
+                            <p style="color: #475569; line-height: 1.6; font-size: 0.95rem; margin-top: 8px;">Run professional test cases and manage environments to parameterize your test cycles.</p>
+                        </div>
+
+                        <!-- Split card layout -->
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <!-- Environment Variables -->
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; gap: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-size: 1.5rem; color: #d97706;"><i class="fa fa-globe"/></div>
+                                <div>
+                                    <h4 style="font-weight: 600; font-size: 1rem; color: #d97706;">Dynamic Scopes &amp; Environment Variables</h4>
+                                    <p style="font-size: 0.8rem; color: #475569; line-height: 1.6; margin-top: 6px;">Define parameters like <code>host</code>, <code>token</code>, or <code>port</code> inside specific Environment scopes. Reference them inside your URLs, headers, or body components using the standard curly bracket syntax: <code>{{host}}</code>. The engine resolves them dynamically before execution.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Test Assertions -->
+                            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; gap: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                                <div style="font-size: 1.5rem; color: #10b981;"><i class="fa fa-check-square-o"/></div>
+                                <div>
+                                    <h4 style="font-weight: 600; font-size: 1rem; color: #10b981;">Automated Assertions (Tests Suite)</h4>
+                                    <p style="font-size: 0.8rem; color: #475569; line-height: 1.6; margin-top: 6px;">Compose scripts to automatically validate HTTP response variables. Standard assertions let you verify status codes (e.g. <code>status_code == 200</code>), check headers, or validate specific JSON response keys.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

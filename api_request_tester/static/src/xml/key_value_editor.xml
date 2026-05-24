@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.KeyValueEditor" owl="1">
+        <div class="apt-kv-editor">
+            <div class="apt-kv-header">
+                <div class="apt-kv-col" style="width: 36px;"></div>
+                <div class="apt-kv-col" style="flex: 1;"><t t-esc="props.keyPlaceholder"/></div>
+                <div class="apt-kv-col" style="flex: 1;"><t t-esc="props.valuePlaceholder"/></div>
+                <div class="apt-kv-col" style="width: 36px;"></div>
+            </div>
+            <t t-foreach="props.items" t-as="item" t-key="item_index">
+                <div class="apt-kv-row" t-att-class="{'disabled': !item.enabled}">
+                    <div class="apt-kv-check">
+                        <input type="checkbox" t-att-checked="item.enabled" t-on-change="() => this.toggleRow(item_index)"/>
+                    </div>
+                    <div class="apt-kv-key">
+                        <input type="text" t-model="item.key" t-att-placeholder="props.keyPlaceholder" t-att-disabled="!item.enabled"/>
+                    </div>
+                    <div class="apt-kv-value">
+                        <input type="text" t-model="item.value" t-att-placeholder="props.valuePlaceholder" t-att-disabled="!item.enabled"/>
+                    </div>
+                    <div class="apt-kv-actions">
+                        <button class="apt-kv-remove" t-on-click="() => this.removeRow(item_index)">
+                            <i class="fa fa-times"/>
+                        </button>
+                    </div>
+                </div>
+            </t>
+            <button class="apt-kv-add" t-on-click="addRow">
+                <i class="fa fa-plus me-1"/>Add Row
+            </button>
+        </div>
+    </t>
+</templates>

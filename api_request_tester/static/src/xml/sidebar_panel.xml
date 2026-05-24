@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.SidebarPanel" owl="1">
+        <div class="apt-sidebar" t-att-class="{'collapsed': !props.state.showSidebar}">
+            <!-- Tabs -->
+            <div class="apt-sidebar-tabs">
+                <button class="apt-sidebar-tab" t-att-class="{'active': props.state.sidebarTab === 'collections'}"
+                        t-on-click="() => props.state.sidebarTab = 'collections'">
+                    <i class="fa fa-folder me-1"/>Collections
+                </button>
+                <button class="apt-sidebar-tab" t-att-class="{'active': props.state.sidebarTab === 'history'}"
+                        t-on-click="() => props.state.sidebarTab = 'history'">
+                    <i class="fa fa-history me-1"/>History
+                </button>
+            </div>
+
+            <!-- Action buttons -->
+            <t t-if="props.state.sidebarTab === 'collections'">
+                <div class="apt-sidebar-actions">
+                    <button class="apt-sidebar-action-btn" t-on-click="props.onCreateCollection">
+                        <i class="fa fa-plus me-1"/>Collection
+                    </button>
+                    <button class="apt-sidebar-action-btn" t-on-click="props.onCreateFolder">
+                        <i class="fa fa-folder-o me-1"/>Folder
+                    </button>
+                </div>
+            </t>
+
+            <!-- Search -->
+            <div class="apt-sidebar-search">
+                <div style="position: relative;">
+                    <i class="fa fa-search" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.75rem;"/>
+                    <input type="text" t-model="props.state.sidebarSearch" placeholder="Search..."/>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="apt-sidebar-body">
+                <!-- Collections Tab -->
+                <t t-if="props.state.sidebarTab === 'collections'">
+                    <t t-if="filteredCollections.length === 0">
+                        <div style="padding: 24px; text-align: center; color: #94a3b8; font-size: 0.8rem;">
+                            <i class="fa fa-folder-open-o" style="font-size: 1.5rem; display: block; margin-bottom: 8px;"/>
+                            No collections yet. Create one to save requests.
+                        </div>
+                    </t>
+                    <t t-foreach="filteredCollections" t-as="col" t-key="col.id">
+                        <CollectionTreeItem
+                            node="col"
+                            nodeType="'collection'"
+                            allFolders="col.folders || []"
+                            allItems="col.items || []"
+                            activeItemId="props.state.activeItemId"
+                            onSelectItem="props.onSelectItem"
+                            onDeleteItem="props.onDeleteItem"
+                            onDeleteFolder="props.onDeleteFolder"
+                            onDeleteCollection="props.onDeleteCollection"
+                            level="0"/>
+                    </t>
+                </t>
+
+                <!-- History Tab -->
+                <t t-if="props.state.sidebarTab === 'history'">
+                    <t t-if="filteredHistory.length === 0">
+                        <div style="padding: 24px; text-align: center; color: #94a3b8; font-size: 0.8rem;">
+                            <i class="fa fa-clock-o" style="font-size: 1.5rem; display: block; margin-bottom: 8px;"/>
+                            No history yet. Send a request to get started.
+                        </div>
+                    </t>
+                    <t t-foreach="filteredHistory" t-as="item" t-key="item.id">
+                        <div class="apt-history-item" t-on-click="() => props.onLoadHistory(item)">
+                            <span t-att-class="'method-badge apt-history-method ' + getMethodClass(item.method)">
+                                <t t-esc="item.method"/>
+                            </span>
+                            <span class="apt-history-url"><t t-esc="item.url"/></span>
+                            <span t-att-class="'apt-history-status ' + getStatusClass(item.status_code)">
+                                <t t-esc="item.status_code"/>
+                            </span>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

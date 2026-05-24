@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_api_environment_list" model="ir.ui.view">
+        <field name="name">api.request.environment.list</field>
+        <field name="model">api.request.environment</field>
+        <field name="arch" type="xml">
+            <list string="Environments">
+                <field name="name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_api_environment_form" model="ir.ui.view">
+        <field name="name">api.request.environment.form</field>
+        <field name="model">api.request.environment</field>
+        <field name="arch" type="xml">
+            <form string="Environment">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Environment Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="Variables">
+                            <field name="variable_ids">
+                                <list editable="bottom">
+                                    <field name="key"/>
+                                    <field name="value"/>
+                                    <field name="variable_type"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_api_environment" model="ir.actions.act_window">
+        <field name="name">Environments</field>
+        <field name="res_model">api.request.environment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_api_tester_environment"
+              name="Environments"
+              parent="menu_api_tester_root"
+              action="action_api_environment"
+              sequence="40"/>
+</odoo>

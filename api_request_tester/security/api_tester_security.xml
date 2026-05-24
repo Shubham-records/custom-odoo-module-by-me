@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- ==================== api.request.collection Rules ==================== -->
+        <record id="rule_api_collection_admin" model="ir.rule">
+            <field name="name">API Collection: Admin full access</field>
+            <field name="model_id" ref="model_api_request_collection"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_api_collection_user" model="ir.rule">
+            <field name="name">API Collection: Own or shared only</field>
+            <field name="model_id" ref="model_api_request_collection"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', ('user_id', '=', user.id), ('shared_user_ids', 'in', [user.id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- ==================== api.request.folder Rules ==================== -->
+        <record id="rule_api_folder_admin" model="ir.rule">
+            <field name="name">API Folder: Admin full access</field>
+            <field name="model_id" ref="model_api_request_folder"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_api_folder_user" model="ir.rule">
+            <field name="name">API Folder: Own or shared only</field>
+            <field name="model_id" ref="model_api_request_folder"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', ('collection_id.user_id', '=', user.id), ('collection_id.shared_user_ids', 'in', [user.id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- ==================== api.request.item Rules ==================== -->
+        <record id="rule_api_item_admin" model="ir.rule">
+            <field name="name">API Request Item: Admin full access</field>
+            <field name="model_id" ref="model_api_request_item"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_api_item_user" model="ir.rule">
+            <field name="name">API Request Item: Own or shared only</field>
+            <field name="model_id" ref="model_api_request_item"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">['|', ('collection_id.user_id', '=', user.id), ('collection_id.shared_user_ids', 'in', [user.id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- ==================== api.request.history Rules ==================== -->
+        <record id="rule_api_history_admin" model="ir.rule">
+            <field name="name">API Request History: Admin full access</field>
+            <field name="model_id" ref="model_api_request_history"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="rule_api_history_user" model="ir.rule">
+            <field name="name">API Request History: Own only</field>
+            <field name="model_id" ref="model_api_request_history"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo>

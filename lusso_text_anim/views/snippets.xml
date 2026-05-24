@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ============================================================
+             SNIPPET TYPE A: Character Tumble / Fall Animation
+             ============================================================ -->
+        <template id="s_text_anim_tumble" name="Text Tumble Animation">
+            <section
+                class="s_text_anim_tumble o_cc o_cc1"
+                data-snippet="s_text_anim_tumble"
+                data-name="Text Tumble Animation"
+            >
+                <div class="container-fluid txa-wrapper txa-type-tumble">
+
+                    <div class="txa-row" data-align="left">
+                        <div class="txa-text-line" data-animation-type="tumble">
+                            <span class="txa-editable">The blossoms</span>
+                        </div>
+                    </div>
+
+                    <div class="txa-row" data-align="right">
+                        <div class="txa-text-line" data-animation-type="tumble">
+                            <span class="txa-editable">have fallen</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </template>
+
+        <!-- ============================================================
+             SNIPPET TYPE B: Word Slide + Rotate Animation (Scroll)
+             ============================================================ -->
+        <template id="s_text_anim_slide" name="Text Slide Animation">
+            <section
+                class="s_text_anim_slide o_cc o_cc1"
+                data-snippet="s_text_anim_slide"
+                data-name="Text Slide Animation"
+            >
+                <div class="container-fluid txa-wrapper txa-type-slide">
+
+                    <div class="txa-row" data-align="center">
+                        <div class="txa-text-line" data-animation-type="slide">
+                            <span class="txa-editable">Blooming</span>
+                        </div>
+                    </div>
+
+                    <div class="txa-row" data-align="center">
+                        <div class="txa-text-line" data-animation-type="slide">
+                            <span class="txa-editable">flowers</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </template>
+
+        <!-- ============================================================
+             Register in Website Builder — Odoo 19 official syntax
+             Step 1: Create "Lusso" group in snippet_groups
+             Step 2: Add snippets into snippet_structure with group="lusso"
+             ============================================================ -->
+        <template id="lusso_snippets" inherit_id="website.snippets" name="Lusso Text Animation Snippets">
+
+            <!-- 1. Register the Lusso group tab in the builder sidebar -->
+            <xpath expr="//snippets[@id='snippet_groups']/*[1]" position="before">
+                <t snippet-group="lusso"
+                   t-snippet="website.s_snippet_group"
+                   string="Lusso"
+                   t-thumbnail="/lusso_text_anim/static/src/img/thumbnails/lusso_group.svg"/>
+            </xpath>
+
+            <!-- 2. Register both snippets inside snippet_structure, tagged with group="lusso" -->
+            <xpath expr="//snippets[@id='snippet_structure']/*[1]" position="before">
+                <t t-snippet="lusso_text_anim.s_text_anim_tumble"
+                   string="Text Tumble"
+                   group="lusso"
+                   t-thumbnail="/lusso_text_anim/static/src/img/thumbnails/tumble_thumb.svg">
+                    <keywords>Text Animation Tumble Letters</keywords>
+                </t>
+                <t t-snippet="lusso_text_anim.s_text_anim_slide"
+                   string="Text Slide"
+                   group="lusso"
+                   t-thumbnail="/lusso_text_anim/static/src/img/thumbnails/slide_thumb.svg">
+                    <keywords>Text Animation Slide Words</keywords>
+                </t>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

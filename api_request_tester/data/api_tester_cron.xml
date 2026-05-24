@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_api_request_scheduled_tests" model="ir.cron">
+        <field name="name">API Tester: Run Scheduled Tests</field>
+        <field name="model_id" ref="model_api_request_item"/>
+        <field name="state">code</field>
+        <field name="code">model.run_scheduled_tests()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

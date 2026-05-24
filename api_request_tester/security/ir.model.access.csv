@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_api_request_tester,api_request_tester,model_api_request_tester,,1,1,1,1
+access_api_request_history,api_request_history,model_api_request_history,,1,1,1,1
+access_api_request_collection,api_request_collection,model_api_request_collection,,1,1,1,1
+access_api_request_item,api_request_item,model_api_request_item,,1,1,1,1
+access_api_request_folder,api_request_folder,model_api_request_folder,,1,1,1,1
+access_api_request_environment,api_request_environment,model_api_request_environment,,1,1,1,1
+access_api_request_environment_variable,api_request_environment_variable,model_api_request_environment_variable,,1,1,1,1

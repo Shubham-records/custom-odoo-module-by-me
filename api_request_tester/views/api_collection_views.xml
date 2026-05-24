@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_api_collection_list" model="ir.ui.view">
+        <field name="name">api.request.collection.list</field>
+        <field name="model">api.request.collection</field>
+        <field name="arch" type="xml">
+            <list string="Collections">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="item_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_api_collection_form" model="ir.ui.view">
+        <field name="name">api.request.collection.form</field>
+        <field name="model">api.request.collection</field>
+        <field name="arch" type="xml">
+            <form string="Collection">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Collection Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                        <group string="Sharing &amp; Access">
+                            <field name="user_id" readonly="1"/>
+                            <field name="shared_user_ids" widget="many2many_tags" placeholder="Share with other users..." options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Folders">
+                            <field name="folder_ids">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="parent_id"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Requests">
+                            <field name="item_ids">
+                                <list string="Requests">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="method"/>
+                                    <field name="url"/>
+                                    <field name="folder_id"/>
+                                    <field name="body_type"/>
+                                    <field name="auth_type"/>
+                                </list>
+                                <form string="Request">
+                                    <header>
+                                        <button name="run_test" string="Run Now" type="object" class="btn-primary"/>
+                                    </header>
+                                    <sheet>
+                                        <div class="oe_title">
+                                            <h1><field name="name" placeholder="Request Name"/></h1>
+                                        </div>
+                                        <group>
+                                            <group>
+                                                <field name="method"/>
+                                                <field name="url"/>
+                                                <field name="body_type"/>
+                                                <field name="auth_type"/>
+                                            </group>
+                                            <group>
+                                                <field name="collection_id" invisible="1"/>
+                                                <field name="folder_id"/>
+                                                <field name="scheduled_test"/>
+                                            </group>
+                                        </group>
+                                        <notebook>
+                                            <page string="Headers">
+                                                <field name="headers" widget="ace" options="{'mode': 'json'}"/>
+                                            </page>
+                                            <page string="Query Params">
+                                                <field name="query_params" widget="ace" options="{'mode': 'json'}"/>
+                                            </page>
+                                            <page string="Body">
+                                                <field name="body" widget="ace" options="{'mode': 'json'}"/>
+                                            </page>
+                                            <page string="Auth Config">
+                                                <field name="auth_config" widget="ace" options="{'mode': 'json'}"/>
+                                            </page>
+                                            <page string="Pre-request Script">
+                                                <field name="pre_request_script" widget="ace" options="{'mode': 'python'}"/>
+                                            </page>
+                                            <page string="Assertions">
+                                                <field name="assertions" widget="ace" options="{'mode': 'json'}"/>
+                                            </page>
+                                        </notebook>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_api_collection" model="ir.actions.act_window">
+        <field name="name">Collections</field>
+        <field name="res_model">api.request.collection</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_api_tester_collection"
+              name="Collections"
+              parent="menu_api_tester_root"
+              action="action_api_collection"
+              sequence="30"/>
+</odoo>

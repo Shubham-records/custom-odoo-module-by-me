@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.Tester" owl="1">
+        <div class="o_api_tester_container">
+            <!-- ==================== URL BAR ==================== -->
+            <div class="apt-url-bar">
+                <!-- Sidebar Toggle -->
+                <button style="background: none; border: 1px solid var(--apt-border); border-radius: 6px; padding: 8px 10px; cursor: pointer; color: var(--apt-text-muted);"
+                        t-on-click="toggleSidebar" title="Toggle Sidebar">
+                    <i class="fa fa-bars"/>
+                </button>
+
+                <!-- Method Selector -->
+                <select class="apt-method-select" t-model="state.method"
+                        t-att-style="'color: var(--apt-' + state.method.toLowerCase() + ');'">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="PATCH">PATCH</option>
+                    <option value="DELETE">DELETE</option>
+                    <option value="HEAD">HEAD</option>
+                    <option value="OPTIONS">OPTIONS</option>
+                </select>
+
+                <!-- URL Input -->
+                <input type="text" class="apt-url-input"
+                       placeholder="Enter URL or paste cURL command..."
+                       t-model="state.url"
+                       t-on-paste="onUrlPaste"/>
+
+                <!-- Send Button -->
+                <button class="apt-send-btn" t-on-click="onSend" t-att-disabled="state.loading">
+                    <t t-if="!state.loading">
+                        <i class="fa fa-paper-plane me-1"/>Send
+                    </t>
+                    <t t-else="">
+                        <i class="fa fa-spinner fa-spin me-1"/>Sending...
+                    </t>
+                </button>
+
+                <!-- Save Button -->
+                <button class="apt-save-btn" t-on-click="onQuickSave">
+                    <i class="fa fa-floppy-o me-1"/>
+                    <t t-if="state.activeItemId">Save</t>
+                    <t t-else="">Save As</t>
+                </button>
+
+                <!-- New Request Button -->
+                <button style="background: none; border: 1px solid var(--apt-border); border-radius: 6px; padding: 8px 10px; cursor: pointer; color: var(--apt-text-muted);"
+                        t-on-click="newRequest" title="New Request">
+                    <i class="fa fa-plus"/>
+                </button>
+
+                <!-- Environment Selector -->
+                <select class="apt-env-select" t-model="state.selectedEnvId">
+                    <option t-att-value="null">No Environment</option>
+                    <t t-foreach="state.environments" t-as="env" t-key="env.id">
+                        <option t-att-value="env.id"><t t-esc="env.name"/></option>
+                    </t>
+                </select>
+            </div>
+
+
+
+            <!-- ==================== MAIN CONTENT ==================== -->
+            <div class="apt-content">
+                <!-- Sidebar -->
+                <SidebarPanel state="state"
+                              onSelectItem.bind="onSelectItem"
+                              onLoadHistory.bind="onLoadHistory"
+                              onCreateCollection.bind="onCreateCollection"
+                              onCreateFolder.bind="onCreateFolder"
+                              onDeleteItem.bind="onDeleteItem"
+                              onDeleteFolder.bind="onDeleteFolder"
+                              onDeleteCollection.bind="onDeleteCollection"/>
+
+                <!-- Request Panel -->
+                <RequestTabs state="state"/>
+
+                <!-- Response Panel -->
+                <ResponsePanel state="state"/>
+            </div>
+
+            <!-- ==================== SAVE DIALOG ==================== -->
+            <div t-if="state.showSaveDialog" class="apt-save-dialog" t-on-click="closeSaveDialog">
+                <div class="apt-save-dialog-box" t-on-click.stop="">
+                    <div class="apt-save-title">
+                        <i class="fa fa-floppy-o me-2"/>Save Request
+                    </div>
+
+                    <div class="apt-save-field">
+                        <label>Request Name</label>
+                        <input type="text" t-model="state.saveName" placeholder="My API Request"/>
+                    </div>
+
+                    <div class="apt-save-field">
+                        <label>Collection</label>
+                        <select t-model="state.saveCollectionId">
+                            <option t-att-value="null">-- Select Collection --</option>
+                            <t t-foreach="state.collections" t-as="col" t-key="col.id">
+                                <option t-att-value="col.id"><t t-esc="col.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class="apt-save-field">
+                        <label>Folder (Optional)</label>
+                        <select t-model="state.saveFolderId">
+                            <option t-att-value="null">None (Root Level)</option>
+                            <t t-foreach="getFoldersForCollection(state.saveCollectionId)" t-as="fold" t-key="fold.id">
+                                <option t-att-value="fold.id"><t t-esc="fold.path"/></option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class="apt-save-actions">
+                        <button class="apt-save-btn" t-on-click="closeSaveDialog">Cancel</button>
+                        <button class="apt-send-btn" t-on-click="onSaveRequest">
+                            <i class="fa fa-check me-1"/>Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== CREATE COLLECTION MODAL ==================== -->
+            <div t-if="state.showCreateCollectionModal" class="apt-save-dialog" t-on-click="closeCreateCollectionModal">
+                <div class="apt-save-dialog-box" t-on-click.stop="">
+                    <div class="apt-save-title">
+                        <i class="fa fa-plus me-2"/>Create Collection
+                    </div>
+                    <div class="apt-save-field">
+                        <label>Collection Name</label>
+                        <input type="text" t-model="state.newCollectionName" placeholder="e.g. Payments API"/>
+                    </div>
+                    <div class="apt-save-actions">
+                        <button class="apt-save-btn" t-on-click="closeCreateCollectionModal">Cancel</button>
+                        <button class="apt-send-btn" t-on-click="submitCreateCollection">
+                            <i class="fa fa-check me-1"/>Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== CREATE FOLDER MODAL ==================== -->
+            <div t-if="state.showCreateFolderModal" class="apt-save-dialog" t-on-click="closeCreateFolderModal">
+                <div class="apt-save-dialog-box" t-on-click.stop="">
+                    <div class="apt-save-title">
+                        <i class="fa fa-folder-o me-2"/>Create Folder
+                    </div>
+                    <div class="apt-save-field">
+                        <label>Folder Name</label>
+                        <input type="text" t-model="state.newFolderName" placeholder="e.g. V1 Authentication"/>
+                    </div>
+                    <div class="apt-save-field">
+                        <label>Collection</label>
+                        <select t-model="state.newFolderCollectionId">
+                            <option t-att-value="null">-- Select Collection --</option>
+                            <t t-foreach="state.collections" t-as="col" t-key="col.id">
+                                <option t-att-value="col.id"><t t-esc="col.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="apt-save-field">
+                        <label>Parent Folder (Optional for nested)</label>
+                        <select t-model="state.newFolderParentId">
+                            <option t-att-value="null">None (Root Folder)</option>
+                            <t t-foreach="getFoldersForCollection(state.newFolderCollectionId)" t-as="fold" t-key="fold.id">
+                                <option t-att-value="fold.id"><t t-esc="fold.path"/></option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="apt-save-actions">
+                        <button class="apt-save-btn" t-on-click="closeCreateFolderModal">Cancel</button>
+                        <button class="apt-send-btn" t-on-click="submitCreateFolder">
+                            <i class="fa fa-check me-1"/>Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- ==================== CONFIRM MODAL ==================== -->
+            <div t-if="state.showConfirmModal" class="apt-save-dialog" t-on-click="closeConfirmModal">
+                <div class="apt-save-dialog-box" t-on-click.stop="" style="max-width: 400px;">
+                    <div class="apt-save-title text-danger">
+                        <i class="fa fa-exclamation-triangle me-2"/>
+                        <t t-esc="state.confirmTitle || 'Confirm Action'"/>
+                    </div>
+                    <div class="apt-save-field" style="margin-top: 15px; margin-bottom: 20px;">
+                        <p style="font-size: 0.9rem; color: var(--apt-text); margin: 0; line-height: 1.5;">
+                            <t t-esc="state.confirmMessage || 'Are you sure you want to proceed?'"/>
+                        </p>
+                    </div>
+                    <div class="apt-save-actions">
+                        <button class="apt-save-btn" t-on-click="closeConfirmModal">Cancel</button>
+                        <button class="apt-send-btn" style="background: #ef4444; border-color: #ef4444; color: white;" t-on-click="submitConfirmAction">
+                            <i class="fa fa-trash-o me-1"/>Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

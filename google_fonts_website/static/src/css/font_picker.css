@@ -1,0 +1,87 @@
+/* ===== Google Fonts Picker ===== */
+.o-we-toolbar { overflow: visible !important; position: relative !important; }
+
+.gf-btn-group {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 0 4px !important;
+}
+.gf-trigger {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    height: 28px !important;
+    padding: 0 8px !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    color: #212529 !important;
+    font-size: 12px !important;
+    font-family: inherit !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    user-select: none !important;
+    outline: none !important;
+    flex-shrink: 0 !important;
+}
+.gf-trigger:hover { background: #f8f9fa !important; border-color: #adb5bd !important; }
+.gf-trigger.gf-open { border-color: #714b67 !important; background: #f8f0f5 !important; }
+.gf-trigger-font   { min-width: 120px !important; justify-content: space-between !important; }
+.gf-trigger-weight { min-width: 90px  !important; justify-content: space-between !important; }
+.gf-caret { font-size: 10px !important; opacity: 0.5 !important; }
+
+/* Panel — uses class .gf-panel on whatever element we append to */
+.gf-panel {
+    position: absolute !important;
+    z-index: 2147483647 !important;
+    background: #fff !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,.2) !important;
+    min-width: 190px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 400px !important;
+    overflow: hidden !important;
+    font-size: 13px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    color: #212529 !important;
+}
+.gf-search-box {
+    padding: 8px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #eee !important;
+    flex-shrink: 0 !important;
+}
+.gf-search-input {
+    width: 100% !important;
+    padding: 6px 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    outline: none !important;
+}
+.gf-search-input:focus { border-color: #714b67 !important; }
+
+.gf-list {
+    overflow-y: auto !important;
+    flex-grow: 1 !important;
+    padding: 4px 0 !important;
+}
+
+.gf-group-label {
+    padding: 8px 14px 3px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .6px !important;
+    color: #adb5bd !important;
+    pointer-events: none !important;
+}
+.gf-item {
+    padding: 7px 16px !important;
+    cursor: pointer !important;
+    line-height: 1.4 !important;
+}
+.gf-item:hover { background: #f0e8f0 !important; color: #714b67 !important; }

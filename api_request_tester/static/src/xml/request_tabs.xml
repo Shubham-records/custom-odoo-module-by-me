@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.RequestTabs" owl="1">
+        <div class="apt-request-panel">
+            <!-- Tab Headers -->
+            <div class="apt-tabs" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    <t t-foreach="tabs" t-as="tab" t-key="tab.id">
+                        <button class="apt-tab" t-att-class="{'active': props.state.activeTab === tab.id}"
+                                t-on-click="() => props.state.activeTab = tab.id">
+                            <t t-esc="tab.label"/>
+                        </button>
+                    </t>
+                </div>
+                <!-- Dynamic breadcrumb for saved request path -->
+                <div t-if="props.state.activeItemPath" style="padding-right: 16px; font-size: 0.75rem; color: var(--apt-text-muted); display: flex; align-items: center; gap: 6px;">
+                    <i class="fa fa-folder-open-o"/>
+                    <span style="font-weight: 500; color: var(--apt-text);"><t t-esc="props.state.activeItemPath"/></span>
+                    <span class="badge bg-light text-muted border" style="font-size: 10px; padding: 2px 6px;">Saved</span>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="apt-tab-content">
+                <!-- Params Tab -->
+                <div t-if="props.state.activeTab === 'params'">
+                    <KeyValueEditor items="props.state.queryParams" keyPlaceholder="'Parameter'" valuePlaceholder="'Value'"/>
+                </div>
+
+                <!-- Headers Tab -->
+                <div t-if="props.state.activeTab === 'headers'">
+                    <KeyValueEditor items="props.state.headers" keyPlaceholder="'Header'" valuePlaceholder="'Value'"/>
+                </div>
+
+                <!-- Body Tab -->
+                <div t-if="props.state.activeTab === 'body'">
+                    <BodyEditor state="props.state"/>
+                </div>
+
+                <!-- Auth Tab -->
+                <div t-if="props.state.activeTab === 'auth'">
+                    <AuthEditor state="props.state"/>
+                </div>
+
+                <!-- Pre-request Script Tab -->
+                <div t-if="props.state.activeTab === 'scripts'">
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; font-size: 0.8rem; color: #1e40af;">
+                        <i class="fa fa-lightbulb-o me-1"/>
+                        Python code executed before the request. Available context: <code>url</code>, <code>headers</code>, <code>body</code>, <code>json</code>, <code>requests</code>.
+                    </div>
+                    <textarea class="apt-body-textarea" rows="14" t-model="props.state.preRequestScript"
+                              placeholder="# Example:&#10;headers['X-Custom'] = 'dynamic-value'&#10;url = url + '?ts=' + str(int(time.time()))"/>
+                </div>
+
+                <!-- Assertions Tab -->
+                <div t-if="props.state.activeTab === 'assertions'">
+                    <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; font-size: 0.8rem; color: #065f46;">
+                        <i class="fa fa-check-square-o me-1"/>
+                        Define test assertions in JSON. Supported targets: <code>status_code</code>, <code>body_contains</code>, <code>response_time</code>.
+                    </div>
+                    <textarea class="apt-body-textarea" rows="14" t-model="props.state.assertions"
+                              placeholder='[&#10;  {"name": "Status is 200", "target": "status_code", "expected": 200},&#10;  {"name": "Has data", "target": "body_contains", "expected": "data"},&#10;  {"name": "Fast response", "target": "response_time", "expected": 500}&#10;]'/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

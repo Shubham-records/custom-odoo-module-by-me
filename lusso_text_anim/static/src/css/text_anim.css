@@ -1,0 +1,170 @@
+/* ================================================================
+   Lusso Text Animation Snippets — text_anim.css
+   Replicates the on-scroll typography animations from the reference
+   ================================================================ */
+
+/* ── Section wrapper ─────────────────────────────────────────── */
+.s_text_anim_tumble,
+.s_text_anim_slide {
+    background-color: #0f0e0d;
+    overflow: hidden;
+    position: relative;
+}
+
+.txa-wrapper {
+    padding: 6rem 4vw;
+    width: 100%;
+}
+
+/* ── Each animated row ───────────────────────────────────────── */
+.txa-row {
+    display: flex;
+    width: 100%;
+    /* NO overflow:hidden here — clipping is handled per-word by .txa-word-wrap */
+    padding: 0.15em 0;
+    line-height: 1;
+}
+
+/* Alignment variants */
+.txa-row[data-align="left"]   { justify-content: flex-start; }
+.txa-row[data-align="center"] { justify-content: center; }
+.txa-row[data-align="right"]  { justify-content: flex-end; }
+
+/* ── Text line ───────────────────────────────────────────────── */
+.txa-text-line {
+    font-size: 9vw;
+    font-weight: 700;
+    color: #d4b896;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    white-space: nowrap;
+    /* NO overflow:hidden — the per-word wrap handles clipping for Type B */
+    position: relative;
+}
+
+/* ── Individual character spans (injected by JS) ─────────────── */
+.txa-char {
+    display: inline-block;
+    will-change: transform, opacity;
+    transform-origin: center bottom;
+}
+
+/* Space character */
+.txa-char.is-space {
+    display: inline-block;
+    width: 0.3em;
+}
+
+/* ── Word spans (for slide animation) ───────────────────────── */
+.txa-word-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+
+.txa-word {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+/* Space between words */
+.txa-word-space {
+    display: inline-block;
+    width: 0.25em;
+}
+
+/* ── Editable span (content-editable area in editor) ─────────── */
+.txa-editable {
+    display: inline;
+}
+
+/* ── Editor-mode: show raw text, disable animation preview ───── */
+.o_editable .txa-char,
+.o_editable .txa-word,
+.o_editable .txa-word-wrap {
+    /* Reset any inline transform so editor shows clean text */
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+.o_editable .txa-text-line {
+    overflow: visible;
+}
+
+/* ── Add-row button placeholder shown in editor ──────────────── */
+.txa-add-row-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(212, 184, 150, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    color: rgba(212, 184, 150, 0.5);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.txa-add-row-placeholder:hover {
+    border-color: rgba(212, 184, 150, 0.7);
+    color: rgba(212, 184, 150, 0.9);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .txa-text-line {
+        font-size: 12vw;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .txa-wrapper {
+        padding: 4rem 6vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .txa-text-line {
+        font-size: 15vw;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TYPE B — Character clip-mask reveal (bottom to top, letter by letter)
+   .txa-char-wrap   = overflow:hidden clip window per character
+   .txa-char-inner  = the element GSAP moves: y 110% → 0%
+   .txa-char-space  = plain space gap between words
+   Pure vertical translation — zero rotation at all times.
+   ══════════════════════════════════════════════════════════════ */
+
+.s_text_anim_slide .txa-char-wrap {
+    display: inline-flex;
+    overflow: hidden;            /* THE clip boundary — must not be removed */
+    vertical-align: bottom;      /* keeps all char wraps on the same baseline */
+    /* Extra room so descenders (g, y, p, j) don't clip */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+}
+
+.s_text_anim_slide .txa-char-inner {
+    display: inline-block;
+    will-change: transform;
+    transform-origin: bottom center;
+    /* Never rotated — GSAP only animates y */
+}
+
+.s_text_anim_slide .txa-char-space {
+    display: inline-block;
+    width: 0.3em;
+}
+
+/* Editor: show all text normally, no clipping */
+.o_editable .s_text_anim_slide .txa-char-wrap {
+    overflow: visible;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.o_editable .s_text_anim_slide .txa-char-inner {
+    transform: none !important;
+}

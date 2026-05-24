@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        In Odoo 19, snippet options are registered entirely in JavaScript
+        via the `registry` from "@web/core/registry" and the
+        `useDomState` / `SnippetOption` API.
+
+        This file is intentionally minimal — it only exists so the manifest
+        entry `views/snippet_options.xml` doesn't break on load.
+
+        All option logic lives in:
+            static/src/js/text_anim_options.js
+    -->
+</odoo>

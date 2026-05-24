@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="api_request_tester.BodyEditor" owl="1">
+        <div>
+            <!-- Body Type Selector -->
+            <div class="apt-body-type-bar">
+                <t t-foreach="bodyTypes" t-as="bt" t-key="bt.value">
+                    <label class="apt-body-type-radio" t-att-class="{'active': props.state.bodyType === bt.value}">
+                        <input type="radio" name="body_type" t-att-value="bt.value"
+                               t-att-checked="props.state.bodyType === bt.value"
+                               t-on-change="onBodyTypeChange"/>
+                        <t t-esc="bt.label"/>
+                    </label>
+                </t>
+            </div>
+
+            <!-- None -->
+            <div t-if="props.state.bodyType === 'none'" class="text-muted" style="padding: 40px; text-align: center; font-size: 0.9rem;">
+                <i class="fa fa-ban" style="font-size: 2rem; display: block; margin-bottom: 8px; color: #cbd5e1;"/>
+                This request does not have a body.
+            </div>
+
+            <!-- Raw -->
+            <div t-if="props.state.bodyType === 'raw'">
+                <textarea class="apt-body-textarea" rows="14" t-model="props.state.body"
+                          placeholder="Enter raw request body..."/>
+            </div>
+
+            <!-- JSON -->
+            <div t-if="props.state.bodyType === 'json'">
+                <div style="margin-bottom: 8px; text-align: right;">
+                    <button class="apt-save-btn" style="padding: 4px 12px; font-size: 0.75rem;" t-on-click="formatJson">
+                        <i class="fa fa-indent me-1"/>Beautify
+                    </button>
+                </div>
+                <textarea class="apt-body-textarea" rows="14" t-model="props.state.body"
+                          placeholder='{"key": "value"}'/>
+            </div>
+
+            <!-- Form Data -->
+            <div t-if="props.state.bodyType === 'form_data'">
+                <KeyValueEditor items="formDataItems" keyPlaceholder="'Field'" valuePlaceholder="'Value'"/>
+            </div>
+
+            <!-- URL Encoded -->
+            <div t-if="props.state.bodyType === 'urlencoded'">
+                <KeyValueEditor items="urlencodedItems" keyPlaceholder="'Key'" valuePlaceholder="'Value'"/>
+            </div>
+
+            <!-- GraphQL -->
+            <div t-if="props.state.bodyType === 'graphql'">
+                <div style="margin-bottom: 8px;">
+                    <label style="font-size: 0.8rem; font-weight: 600;">Query</label>
+                </div>
+                <textarea class="apt-body-textarea" rows="8" t-model="props.state.body"
+                          placeholder="query { users { id name email } }"/>
+                <div style="margin: 12px 0 8px;">
+                    <label style="font-size: 0.8rem; font-weight: 600;">Variables (JSON)</label>
+                </div>
+                <textarea class="apt-body-textarea" rows="4" t-model="props.state.bodyGraphqlVars"
+                          placeholder='{"id": 1}'/>
+            </div>
+        </div>
+    </t>
+</templates>

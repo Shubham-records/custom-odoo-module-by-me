@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- ============================================================
+     SNIPPET TEMPLATES
+     ============================================================ -->
+
+<!-- ─────────────────────────────────────────────────────────────
+     1. HERO — LIGHT THEME (Default "Sculpted Comfort")
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_hero_light" name="Lusso Hero – Light">
+    <section class="lusso-hero lusso-hero--light o_cc o_cc1" data-lusso-snippet="hero_light">
+        <div class="lusso-hero__inner container-fluid">
+            <div class="lusso-hero__content">
+                <span class="lusso-hero__eyebrow" data-gsap="fade-up">New Collection 2025</span>
+                <h1 class="lusso-hero__title" data-gsap="fade-up" data-gsap-delay="0.1">
+                    Sculpted<br/>
+                    <em>Comfort</em> for<br/>
+                    modern<br/>
+                    living.
+                </h1>
+                <p class="lusso-hero__sub" data-gsap="fade-up" data-gsap-delay="0.2">
+                    Experience the perfect blend of minimalist design and ergonomic luxury.
+                    Handcrafted pieces that define your sanctuary.
+                </p>
+                <div class="lusso-hero__cta" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <a href="#" class="lusso-btn lusso-btn--dark">View Collection</a>
+                    <a href="#" class="lusso-btn lusso-btn--ghost">
+                        <span class="lusso-btn__play">▶</span> Watch Film
+                    </a>
+                </div>
+                <div class="lusso-hero__press" data-gsap="fade-up" data-gsap-delay="0.4">
+                    <span class="lusso-hero__press-label">Featured in</span>
+                    <span class="lusso-hero__press-logo">AD</span>
+                    <span class="lusso-hero__press-logo">Wallpaper*</span>
+                    <span class="lusso-hero__press-logo">Dezeen</span>
+                </div>
+            </div>
+            <div class="lusso-hero__media" data-gsap="scale-in" data-gsap-delay="0.15">
+                <div class="lusso-hero__image-wrap">
+                    <img src="/lusso_website_snippets/static/src/img/hero-chair.png"
+                         alt="The Eames Lounger"
+                         class="lusso-hero__image"
+                         onerror="this.style.display='none'; this.parentElement.classList.add('lusso-hero__image--placeholder')"/>
+                    <div class="lusso-hero__tag" data-gsap="pop-in" data-gsap-delay="0.5">
+                        <span class="lusso-hero__tag-label">NEW ARRIVAL</span>
+                        <span class="lusso-hero__tag-name">The Eames Lounger</span>
+                        <span class="lusso-hero__tag-price">$2,450</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     2. HERO — DARK THEME
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_hero_dark" name="Lusso Hero – Dark">
+    <section class="lusso-hero lusso-hero--dark o_cc o_cc5" data-lusso-snippet="hero_dark">
+        <div class="lusso-hero__noise"></div>
+        <div class="lusso-hero__inner container-fluid">
+            <div class="lusso-hero__content">
+                <span class="lusso-hero__eyebrow" data-gsap="fade-up">Atelier Edition</span>
+                <h1 class="lusso-hero__title" data-gsap="fade-up" data-gsap-delay="0.1">
+                    Where<br/>
+                    <em>Silence</em><br/>
+                    meets<br/>
+                    design.
+                </h1>
+                <p class="lusso-hero__sub" data-gsap="fade-up" data-gsap-delay="0.2">
+                    Obsessively crafted for those who notice everything.
+                    Each piece tells a story of restraint and mastery.
+                </p>
+                <div class="lusso-hero__cta" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <a href="#" class="lusso-btn lusso-btn--light">Explore Atelier</a>
+                    <a href="#" class="lusso-btn lusso-btn--ghost-light">
+                        <span class="lusso-btn__play">▶</span> Behind the Craft
+                    </a>
+                </div>
+            </div>
+            <div class="lusso-hero__media" data-gsap="scale-in" data-gsap-delay="0.15">
+                <div class="lusso-hero__image-wrap lusso-hero__image-wrap--dark">
+                    <img src="/lusso_website_snippets/static/src/img/hero-dark.png"
+                         alt="Dark Hero Piece"
+                         class="lusso-hero__image"
+                         onerror="this.style.display='none'; this.parentElement.classList.add('lusso-hero__image--placeholder')"/>
+                    <div class="lusso-hero__tag lusso-hero__tag--dark" data-gsap="pop-in" data-gsap-delay="0.5">
+                        <span class="lusso-hero__tag-label">SIGNATURE PIECE</span>
+                        <span class="lusso-hero__tag-name">The Noir Armchair</span>
+                        <span class="lusso-hero__tag-price">$3,800</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     3. HERO — WARM / CREAM THEME
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_hero_warm" name="Lusso Hero – Warm">
+    <section class="lusso-hero lusso-hero--warm o_cc o_cc2" data-lusso-snippet="hero_warm">
+        <div class="lusso-hero__inner container-fluid">
+            <div class="lusso-hero__content">
+                <span class="lusso-hero__eyebrow" data-gsap="fade-up">Warm Living Series</span>
+                <h1 class="lusso-hero__title" data-gsap="fade-up" data-gsap-delay="0.1">
+                    Crafted<br/>
+                    for<br/>
+                    <em>Warmth</em><br/>
+                    &amp; soul.
+                </h1>
+                <p class="lusso-hero__sub" data-gsap="fade-up" data-gsap-delay="0.2">
+                    Inspired by earth tones and organic forms. Furniture that
+                    feels like coming home — always.
+                </p>
+                <div class="lusso-hero__cta" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <a href="#" class="lusso-btn lusso-btn--warm">Shop Warm Series</a>
+                    <a href="#" class="lusso-btn lusso-btn--ghost-warm">Learn More</a>
+                </div>
+            </div>
+            <div class="lusso-hero__media" data-gsap="scale-in" data-gsap-delay="0.15">
+                <div class="lusso-hero__image-wrap lusso-hero__image-wrap--warm">
+                    <img src="/lusso_website_snippets/static/src/img/hero-warm.png"
+                         alt="Warm Collection"
+                         class="lusso-hero__image"
+                         onerror="this.style.display='none'; this.parentElement.classList.add('lusso-hero__image--placeholder')"/>
+                    <div class="lusso-hero__tag lusso-hero__tag--warm" data-gsap="pop-in" data-gsap-delay="0.5">
+                        <span class="lusso-hero__tag-label">BESTSELLER</span>
+                        <span class="lusso-hero__tag-name">Sienna Lounge Chair</span>
+                        <span class="lusso-hero__tag-price">$1,980</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     4. HERO — FOREST / GREEN THEME
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_hero_forest" name="Lusso Hero – Forest">
+    <section class="lusso-hero lusso-hero--forest o_cc o_cc3" data-lusso-snippet="hero_forest">
+        <div class="lusso-hero__inner container-fluid">
+            <div class="lusso-hero__content">
+                <span class="lusso-hero__eyebrow" data-gsap="fade-up">Sustainable Series</span>
+                <h1 class="lusso-hero__title" data-gsap="fade-up" data-gsap-delay="0.1">
+                    Born from<br/>
+                    <em>Nature,</em><br/>
+                    built to<br/>
+                    last.
+                </h1>
+                <p class="lusso-hero__sub" data-gsap="fade-up" data-gsap-delay="0.2">
+                    Every piece sustainably sourced. Carbon neutral since 2021.
+                    Furniture with a conscience and a soul.
+                </p>
+                <div class="lusso-hero__cta" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <a href="#" class="lusso-btn lusso-btn--forest">Shop Sustainable</a>
+                    <a href="#" class="lusso-btn lusso-btn--ghost-forest">Our Promise</a>
+                </div>
+            </div>
+            <div class="lusso-hero__media" data-gsap="scale-in" data-gsap-delay="0.15">
+                <div class="lusso-hero__image-wrap lusso-hero__image-wrap--forest">
+                    <img src="/lusso_website_snippets/static/src/img/hero-forest.png"
+                         alt="Forest Collection"
+                         class="lusso-hero__image"
+                         onerror="this.style.display='none'; this.parentElement.classList.add('lusso-hero__image--placeholder')"/>
+                    <div class="lusso-hero__tag lusso-hero__tag--forest" data-gsap="pop-in" data-gsap-delay="0.5">
+                        <span class="lusso-hero__tag-label">ECO CERTIFIED</span>
+                        <span class="lusso-hero__tag-name">Moss Sectional Sofa</span>
+                        <span class="lusso-hero__tag-price">$4,200</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     5. CURATED COLLECTIONS — LIGHT
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_collections_light" name="Lusso Collections – Light">
+    <section class="lusso-collections lusso-collections--light o_cc o_cc1" data-lusso-snippet="collections_light">
+        <div class="container-fluid">
+            <div class="lusso-collections__header" data-gsap="fade-up">
+                <div class="lusso-collections__heading">
+                    <h2>Curated <em>Collections</em></h2>
+                    <p>Timeless pieces for every corner of your home.</p>
+                </div>
+                <a href="#" class="lusso-link-arrow">View All →</a>
+            </div>
+            <div class="lusso-collections__grid">
+                <div class="lusso-collections__item lusso-collections__item--tall" data-gsap="fade-up" data-gsap-delay="0">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-living.jpg" alt="Living Room"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <div class="lusso-collections__overlay"></div>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Living Room <span class="lusso-collections__arrow">↗</span></span>
+                        <span class="lusso-collections__sub">Sofas, Armchairs &amp; Coffee Tables</span>
+                    </div>
+                </div>
+                <div class="lusso-collections__item lusso-collections__item--tall" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-dining.jpg" alt="Dining"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <div class="lusso-collections__overlay"></div>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Dining <span class="lusso-collections__arrow">↗</span></span>
+                        <span class="lusso-collections__sub">Dining Tables &amp; Seating</span>
+                    </div>
+                </div>
+                <div class="lusso-collections__item" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-workspace.jpg" alt="Workspace"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <div class="lusso-collections__overlay"></div>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Workspace <span class="lusso-collections__arrow">↗</span></span>
+                        <span class="lusso-collections__sub">Desks &amp; Storage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     6. CURATED COLLECTIONS — DARK
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_collections_dark" name="Lusso Collections – Dark">
+    <section class="lusso-collections lusso-collections--dark o_cc o_cc5" data-lusso-snippet="collections_dark">
+        <div class="container-fluid">
+            <div class="lusso-collections__header" data-gsap="fade-up">
+                <div class="lusso-collections__heading">
+                    <h2>The <em>Edit</em></h2>
+                    <p>Carefully selected. Deliberately placed.</p>
+                </div>
+                <a href="#" class="lusso-link-arrow lusso-link-arrow--light">View All →</a>
+            </div>
+            <div class="lusso-collections__grid lusso-collections__grid--4col">
+                <div class="lusso-collections__item lusso-collections__item--card-dark" data-gsap="fade-up" data-gsap-delay="0">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-living.jpg" alt="Living"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Living Room</span>
+                        <span class="lusso-collections__count">24 pieces</span>
+                    </div>
+                </div>
+                <div class="lusso-collections__item lusso-collections__item--card-dark" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-dining.jpg" alt="Dining"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Dining</span>
+                        <span class="lusso-collections__count">18 pieces</span>
+                    </div>
+                </div>
+                <div class="lusso-collections__item lusso-collections__item--card-dark" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-workspace.jpg" alt="Workspace"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Workspace</span>
+                        <span class="lusso-collections__count">12 pieces</span>
+                    </div>
+                </div>
+                <div class="lusso-collections__item lusso-collections__item--card-dark" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <div class="lusso-collections__thumb">
+                        <img src="/lusso_website_snippets/static/src/img/col-bedroom.jpg" alt="Bedroom"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                    </div>
+                    <div class="lusso-collections__info">
+                        <span class="lusso-collections__name">Bedroom</span>
+                        <span class="lusso-collections__count">20 pieces</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     7. CRAFTSMANSHIP — LIGHT (The Art of Craftsmanship)
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_craft_light" name="Lusso Craftsmanship – Light">
+    <section class="lusso-craft lusso-craft--light o_cc o_cc2" data-lusso-snippet="craft_light">
+        <div class="container-fluid">
+            <div class="lusso-craft__layout">
+                <div class="lusso-craft__left">
+                    <span class="lusso-craft__eyebrow" data-gsap="fade-up">OUR PHILOSOPHY</span>
+                    <h2 class="lusso-craft__title" data-gsap="fade-up" data-gsap-delay="0.1">
+                        The Art of<br/><em>Craftsmanship</em>
+                    </h2>
+                    <p class="lusso-craft__body" data-gsap="fade-up" data-gsap-delay="0.2">
+                        Every piece is a testament to sustainable luxury, carved from
+                        ethically sourced timber and finished by master artisans who have
+                        honed their skills over generations.
+                    </p>
+                    <div class="lusso-craft__pillars" data-gsap="fade-up" data-gsap-delay="0.3">
+                        <div class="lusso-craft__pillar">
+                            <span class="lusso-craft__pillar-icon">🌲</span>
+                            <div>
+                                <strong>Ethically Sourced</strong>
+                                <p>Wood from certified renewable forests ensuring future growth.</p>
+                            </div>
+                        </div>
+                        <div class="lusso-craft__pillar">
+                            <span class="lusso-craft__pillar-icon">🪚</span>
+                            <div>
+                                <strong>Hand Finished</strong>
+                                <p>Oiled and polished by hand for a natural, tactile feel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="lusso-btn lusso-btn--dark" data-gsap="fade-up" data-gsap-delay="0.4">Read Our Story</a>
+                </div>
+                <div class="lusso-craft__right" data-gsap="fade-left" data-gsap-delay="0.2">
+                    <div class="lusso-craft__images">
+                        <div class="lusso-craft__img-main">
+                            <img src="/lusso_website_snippets/static/src/img/craft-wood.jpg" alt="Wood craftsmanship"
+                                 onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        </div>
+                        <div class="lusso-craft__img-accent">
+                            <img src="/lusso_website_snippets/static/src/img/craft-hands.jpg" alt="Artisan hands"
+                                 onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        </div>
+                    </div>
+                    <div class="lusso-craft__stats">
+                        <div class="lusso-craft__stat" data-gsap="count-up">
+                            <strong class="lusso-craft__stat-num" data-target="10000">10k+</strong>
+                            <span>Pieces Crafted</span>
+                        </div>
+                        <div class="lusso-craft__stat" data-gsap="count-up" data-gsap-delay="0.1">
+                            <strong class="lusso-craft__stat-num" data-target="25">25+</strong>
+                            <span>Years of Heritage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     8. CRAFTSMANSHIP — DARK (Noir Edition)
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_craft_dark" name="Lusso Craftsmanship – Dark">
+    <section class="lusso-craft lusso-craft--dark o_cc o_cc5" data-lusso-snippet="craft_dark">
+        <div class="lusso-craft__noise"></div>
+        <div class="container-fluid">
+            <div class="lusso-craft__layout lusso-craft__layout--reversed">
+                <div class="lusso-craft__right" data-gsap="fade-right" data-gsap-delay="0.2">
+                    <div class="lusso-craft__images">
+                        <div class="lusso-craft__img-main lusso-craft__img-main--dark">
+                            <img src="/lusso_website_snippets/static/src/img/craft-wood.jpg" alt="Dark Craft"
+                                 onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        </div>
+                    </div>
+                    <div class="lusso-craft__stats lusso-craft__stats--dark">
+                        <div class="lusso-craft__stat" data-gsap="count-up">
+                            <strong class="lusso-craft__stat-num" data-target="48">48</strong>
+                            <span>Artisan Partners</span>
+                        </div>
+                        <div class="lusso-craft__stat" data-gsap="count-up" data-gsap-delay="0.1">
+                            <strong class="lusso-craft__stat-num" data-target="100">100%</strong>
+                            <span>Handmade</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lusso-craft__left">
+                    <span class="lusso-craft__eyebrow lusso-craft__eyebrow--dark" data-gsap="fade-up">THE PROCESS</span>
+                    <h2 class="lusso-craft__title lusso-craft__title--dark" data-gsap="fade-up" data-gsap-delay="0.1">
+                        Obsession<br/>
+                        <em>by design.</em>
+                    </h2>
+                    <p class="lusso-craft__body lusso-craft__body--dark" data-gsap="fade-up" data-gsap-delay="0.2">
+                        We don't make furniture. We craft heirlooms. Every joint, every
+                        curve, every surface is considered and reconsidered until nothing
+                        remains but perfection.
+                    </p>
+                    <a href="#" class="lusso-btn lusso-btn--light" data-gsap="fade-up" data-gsap-delay="0.3">See the Process</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     9. STATS BANNER — LIGHT
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_stats_light" name="Lusso Stats Banner – Light">
+    <section class="lusso-stats lusso-stats--light o_cc o_cc1" data-lusso-snippet="stats_light">
+        <div class="container-fluid">
+            <div class="lusso-stats__grid">
+                <div class="lusso-stats__item" data-gsap="fade-up">
+                    <strong class="lusso-stats__num" data-target="10000">10k+</strong>
+                    <span class="lusso-stats__label">Pieces Crafted</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <strong class="lusso-stats__num" data-target="25">25+</strong>
+                    <span class="lusso-stats__label">Years of Heritage</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <strong class="lusso-stats__num" data-target="48">48</strong>
+                    <span class="lusso-stats__label">Master Artisans</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <strong class="lusso-stats__num" data-target="98">98%</strong>
+                    <span class="lusso-stats__label">Customer Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     10. STATS BANNER — DARK
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_stats_dark" name="Lusso Stats Banner – Dark">
+    <section class="lusso-stats lusso-stats--dark o_cc o_cc5" data-lusso-snippet="stats_dark">
+        <div class="container-fluid">
+            <div class="lusso-stats__grid">
+                <div class="lusso-stats__item" data-gsap="fade-up">
+                    <strong class="lusso-stats__num" data-target="10000">10k+</strong>
+                    <span class="lusso-stats__label">Pieces Crafted</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <strong class="lusso-stats__num" data-target="25">25+</strong>
+                    <span class="lusso-stats__label">Years of Heritage</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <strong class="lusso-stats__num" data-target="48">48</strong>
+                    <span class="lusso-stats__label">Master Artisans</span>
+                </div>
+                <div class="lusso-stats__item" data-gsap="fade-up" data-gsap-delay="0.3">
+                    <strong class="lusso-stats__num" data-target="98">98%</strong>
+                    <span class="lusso-stats__label">Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     11. NEWSLETTER — LIGHT (Join the Inner Circle)
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_newsletter_light" name="Lusso Newsletter – Light">
+    <section class="lusso-newsletter lusso-newsletter--light o_cc o_cc1" data-lusso-snippet="newsletter_light">
+        <div class="container-fluid">
+            <div class="lusso-newsletter__wrap" data-gsap="fade-up">
+                <span class="lusso-newsletter__eyebrow">Exclusive Access</span>
+                <h2 class="lusso-newsletter__title">
+                    Join the <em>Inner Circle</em>
+                </h2>
+                <p class="lusso-newsletter__sub">
+                    Receive exclusive access to new drops, design inspiration,
+                    and special offers directly to your inbox.
+                </p>
+                <form class="lusso-newsletter__form" onsubmit="return false;">
+                    <input type="email" placeholder="Your email address" class="lusso-newsletter__input"/>
+                    <button type="submit" class="lusso-btn lusso-btn--dark">Sign Up</button>
+                </form>
+                <p class="lusso-newsletter__legal">
+                    By signing up, you agree to our
+                    <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     12. NEWSLETTER — DARK
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_newsletter_dark" name="Lusso Newsletter – Dark">
+    <section class="lusso-newsletter lusso-newsletter--dark o_cc o_cc5" data-lusso-snippet="newsletter_dark">
+        <div class="lusso-newsletter__noise"></div>
+        <div class="container-fluid">
+            <div class="lusso-newsletter__wrap" data-gsap="fade-up">
+                <span class="lusso-newsletter__eyebrow lusso-newsletter__eyebrow--dark">For The Discerning Few</span>
+                <h2 class="lusso-newsletter__title lusso-newsletter__title--dark">
+                    The <em>Atelier</em><br/>Dispatch
+                </h2>
+                <p class="lusso-newsletter__sub lusso-newsletter__sub--dark">
+                    A curated letter for those who believe the best things
+                    in life are made by hand.
+                </p>
+                <form class="lusso-newsletter__form lusso-newsletter__form--dark" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email" class="lusso-newsletter__input lusso-newsletter__input--dark"/>
+                    <button type="submit" class="lusso-btn lusso-btn--light">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     13. NEWSLETTER — WARM / SPLIT LAYOUT
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_newsletter_warm" name="Lusso Newsletter – Warm Split">
+    <section class="lusso-newsletter lusso-newsletter--warm-split o_cc o_cc2" data-lusso-snippet="newsletter_warm">
+        <div class="lusso-newsletter__split">
+            <div class="lusso-newsletter__split-left" data-gsap="fade-right">
+                <img src="/lusso_website_snippets/static/src/img/newsletter-bg.jpg" alt="Newsletter"
+                     onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+            </div>
+            <div class="lusso-newsletter__split-right" data-gsap="fade-left">
+                <span class="lusso-newsletter__eyebrow">Stay Connected</span>
+                <h2 class="lusso-newsletter__title">
+                    First access,<br/><em>always.</em>
+                </h2>
+                <p class="lusso-newsletter__sub">
+                    New collections, behind-the-scenes stories and
+                    member-only discounts — delivered monthly.
+                </p>
+                <form class="lusso-newsletter__form lusso-newsletter__form--stacked" onsubmit="return false;">
+                    <input type="email" placeholder="your@email.com" class="lusso-newsletter__input lusso-newsletter__input--warm"/>
+                    <button type="submit" class="lusso-btn lusso-btn--warm">Get Access</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     14. FEATURED PRODUCTS — HORIZONTAL SCROLL
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_products_scroll" name="Lusso Products – Horizontal Scroll">
+    <section class="lusso-products lusso-products--scroll o_cc o_cc1" data-lusso-snippet="products_scroll">
+        <div class="container-fluid">
+            <div class="lusso-products__header" data-gsap="fade-up">
+                <h2>New <em>Arrivals</em></h2>
+                <div class="lusso-products__nav">
+                    <button class="lusso-products__nav-btn" id="lusso-scroll-prev">←</button>
+                    <button class="lusso-products__nav-btn" id="lusso-scroll-next">→</button>
+                </div>
+            </div>
+        </div>
+        <div class="lusso-products__track-wrap">
+            <div class="lusso-products__track" id="lusso-products-track">
+                <div class="lusso-products__card" data-gsap="fade-up" data-gsap-delay="0">
+                    <div class="lusso-products__img">
+                        <img src="/lusso_website_snippets/static/src/img/prod-1.jpg" alt="Product 1"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <button class="lusso-products__wishlist">♡</button>
+                    </div>
+                    <div class="lusso-products__meta">
+                        <span class="lusso-products__name">The Eames Lounger</span>
+                        <span class="lusso-products__price">$2,450</span>
+                    </div>
+                </div>
+                <div class="lusso-products__card" data-gsap="fade-up" data-gsap-delay="0.05">
+                    <div class="lusso-products__img">
+                        <img src="/lusso_website_snippets/static/src/img/prod-2.jpg" alt="Product 2"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <button class="lusso-products__wishlist">♡</button>
+                    </div>
+                    <div class="lusso-products__meta">
+                        <span class="lusso-products__name">Sienna Armchair</span>
+                        <span class="lusso-products__price">$1,980</span>
+                    </div>
+                </div>
+                <div class="lusso-products__card" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <div class="lusso-products__img">
+                        <img src="/lusso_website_snippets/static/src/img/prod-3.jpg" alt="Product 3"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <button class="lusso-products__wishlist">♡</button>
+                    </div>
+                    <div class="lusso-products__meta">
+                        <span class="lusso-products__name">Oslo Dining Table</span>
+                        <span class="lusso-products__price">$3,200</span>
+                    </div>
+                </div>
+                <div class="lusso-products__card" data-gsap="fade-up" data-gsap-delay="0.15">
+                    <div class="lusso-products__img">
+                        <img src="/lusso_website_snippets/static/src/img/prod-4.jpg" alt="Product 4"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <button class="lusso-products__wishlist">♡</button>
+                    </div>
+                    <div class="lusso-products__meta">
+                        <span class="lusso-products__name">Zen Bookshelf</span>
+                        <span class="lusso-products__price">$890</span>
+                    </div>
+                </div>
+                <div class="lusso-products__card" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <div class="lusso-products__img">
+                        <img src="/lusso_website_snippets/static/src/img/prod-5.jpg" alt="Product 5"
+                             onerror="this.parentElement.classList.add('lusso-img--placeholder'); this.style.display='none'"/>
+                        <button class="lusso-products__wishlist">♡</button>
+                    </div>
+                    <div class="lusso-products__meta">
+                        <span class="lusso-products__name">Moss Sofa</span>
+                        <span class="lusso-products__price">$4,200</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     15. TESTIMONIALS — LIGHT
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_testimonials_light" name="Lusso Testimonials – Light">
+    <section class="lusso-testimonials lusso-testimonials--light o_cc o_cc1" data-lusso-snippet="testimonials_light">
+        <div class="container-fluid">
+            <div class="lusso-testimonials__header" data-gsap="fade-up">
+                <h2>What our <em>clients</em> say</h2>
+            </div>
+            <div class="lusso-testimonials__grid">
+                <div class="lusso-testimonials__card" data-gsap="fade-up" data-gsap-delay="0">
+                    <div class="lusso-testimonials__stars">★★★★★</div>
+                    <p class="lusso-testimonials__quote">
+                        "The craftsmanship is unlike anything I've seen. My Eames Lounger has become the
+                        centrepiece of my entire home."
+                    </p>
+                    <div class="lusso-testimonials__author">
+                        <strong>Sophie M.</strong>
+                        <span>Interior Designer, London</span>
+                    </div>
+                </div>
+                <div class="lusso-testimonials__card" data-gsap="fade-up" data-gsap-delay="0.1">
+                    <div class="lusso-testimonials__stars">★★★★★</div>
+                    <p class="lusso-testimonials__quote">
+                        "I ordered three pieces and each arrived perfectly finished. Lusso delivers
+                        on every promise."
+                    </p>
+                    <div class="lusso-testimonials__author">
+                        <strong>James R.</strong>
+                        <span>Architect, New York</span>
+                    </div>
+                </div>
+                <div class="lusso-testimonials__card" data-gsap="fade-up" data-gsap-delay="0.2">
+                    <div class="lusso-testimonials__stars">★★★★★</div>
+                    <p class="lusso-testimonials__quote">
+                        "Ethically made, stunningly beautiful. Finally a brand that aligns with
+                        my values and my taste."
+                    </p>
+                    <div class="lusso-testimonials__author">
+                        <strong>Aiko T.</strong>
+                        <span>Stylist, Tokyo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     16. MARQUEE / SCROLLING TICKER
+     ───────────────────────────────────────────────────────────── -->
+<template id="s_lusso_marquee" name="Lusso Marquee Ticker">
+    <section class="lusso-marquee o_cc o_cc1" data-lusso-snippet="marquee">
+        <div class="lusso-marquee__track">
+            <div class="lusso-marquee__inner" id="lusso-marquee-inner">
+                <span>Sustainable Design</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Handcrafted Luxury</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>25 Years of Heritage</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Ethically Sourced</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Free White Glove Delivery</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>10,000 Pieces Crafted</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <!-- Duplicate for infinite scroll -->
+                <span>Sustainable Design</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Handcrafted Luxury</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>25 Years of Heritage</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Ethically Sourced</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>Free White Glove Delivery</span>
+                <span class="lusso-marquee__dot">◆</span>
+                <span>10,000 Pieces Crafted</span>
+                <span class="lusso-marquee__dot">◆</span>
+            </div>
+        </div>
+    </section>
+</template>
+
+<!-- ─────────────────────────────────────────────────────────────
+     REGISTER ALL SNIPPETS IN THE WEBSITE BUILDER
+     Category: "Lusso" (custom group under Blocks)
+     ───────────────────────────────────────────────────────────── -->
+<template id="snippets" inherit_id="website.snippets" name="Lusso Snippets">
+
+    <!-- Add a custom Lusso group inside the snippet panel categories -->
+    <xpath expr="//snippets[@id='snippet_groups']" position="inside">
+        <t snippet-group="lusso" t-snippet="website.s_snippet_group" string="Lusso Blocks" t-thumbnail="/website/static/src/img/snippets_thumbs/s_text_image.svg"/>
+    </xpath>
+
+    <!-- Add all Lusso snippets to the structure, assigned to the Lusso group -->
+    <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+        <!-- Heroes -->
+        <t t-snippet="lusso_website_snippets.s_lusso_hero_light" string="Hero Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/hero_light.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_hero_dark" string="Hero Dark" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/hero_dark.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_hero_warm" string="Hero Warm" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/hero_warm.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_hero_forest" string="Hero Forest" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/hero_forest.svg"/>
+
+        <!-- Collections -->
+        <t t-snippet="lusso_website_snippets.s_lusso_collections_light" string="Collections Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/collections_light.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_collections_dark" string="Collections Dark" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/collections_dark.svg"/>
+
+        <!-- Products -->
+        <t t-snippet="lusso_website_snippets.s_lusso_products_scroll" string="Products Scroll" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/products_scroll.svg"/>
+
+        <!-- Craftsmanship / Philosophy -->
+        <t t-snippet="lusso_website_snippets.s_lusso_craft_light" string="Craftsmanship Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/craft_light.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_craft_dark" string="Craftsmanship Dark" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/craft_dark.svg"/>
+
+        <!-- Stats -->
+        <t t-snippet="lusso_website_snippets.s_lusso_stats_light" string="Stats Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/stats_light.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_stats_dark" string="Stats Dark" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/stats_dark.svg"/>
+
+        <!-- Testimonials -->
+        <t t-snippet="lusso_website_snippets.s_lusso_testimonials_light" string="Testimonials Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/testimonials_light.svg"/>
+
+        <!-- Newsletter -->
+        <t t-snippet="lusso_website_snippets.s_lusso_newsletter_light" string="Newsletter Light" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/newsletter_light.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_newsletter_dark" string="Newsletter Dark" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/newsletter_dark.svg"/>
+        <t t-snippet="lusso_website_snippets.s_lusso_newsletter_warm" string="Newsletter Warm" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/newsletter_warm.svg"/>
+
+        <!-- Effects -->
+        <t t-snippet="lusso_website_snippets.s_lusso_marquee" string="Marquee" group="lusso" t-thumbnail="/lusso_website_snippets/static/src/img/thumbs/marquee.svg"/>
+    </xpath>
+</template>
+
+</odoo>

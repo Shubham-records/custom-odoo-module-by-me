@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 120" width="150" height="120">
+  <rect width="150" height="120" fill="#0f0e0d" rx="6"/>
+  <text x="10" y="52" font-family="sans-serif" font-weight="800" font-size="26" fill="#d4b896">Lusso</text>
+  <rect x="10" y="62" width="80" height="4" rx="2" fill="rgba(212,184,150,0.4)"/>
+  <rect x="10" y="72" width="55" height="4" rx="2" fill="rgba(212,184,150,0.2)"/>
+  <text x="10" y="100" font-family="sans-serif" font-size="10" fill="rgba(212,184,150,0.5)">Text Animations</text>
+</svg>
