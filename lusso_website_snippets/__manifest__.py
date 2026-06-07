@@ -13,7 +13,8 @@
         - Stats & Social Proof banners
         All snippets include GSAP scroll-triggered animations and custom Google Fonts.
     """,
-    'author': 'Lusso Furniture',
+    'author': 'shubham kumar pal',
+    'website': 'https://github.com/Shubham-records',
     'category': 'Website',
     'depends': ['website'],
     'data': [

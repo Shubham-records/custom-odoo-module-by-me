@@ -4,6 +4,8 @@
     'summary': 'Google Fonts selector in Website Editor toolbar',
     'category': 'Website',
     'depends': ['website'],
+    'author': 'shubham kumar pal',
+    'website': 'https://github.com/Shubham-records',
     'data': [
         'security/ir.model.access.csv',
         'data/google_font_data.xml',

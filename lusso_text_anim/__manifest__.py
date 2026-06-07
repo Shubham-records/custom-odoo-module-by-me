@@ -11,7 +11,8 @@
         Both support n-number of text rows with configurable alignment
         (left/center/right) via the Odoo Website Editor sidebar.
     """,
-    'author': 'Lusso',
+    'author': 'shubham kumar pal',
+    'website': 'https://github.com/Shubham-records',
     'depends': ['website'],
     'data': [
         'views/snippets.xml',
