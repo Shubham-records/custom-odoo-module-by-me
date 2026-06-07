@@ -10,8 +10,8 @@
         body types (JSON, Raw, Form Data, URL Encoded, GraphQL),
         environment variables, request history, collections, and assertions.
     """,
-    'author': 'Odiware Technologies',
-    'website': 'https://www.odiware.com',
+    'author': 'shubham kumar pal',
+    'website': 'https://github.com/Shubham-records',
     'depends': ['base', 'web'],
     'data': [
         'security/api_tester_security.xml',
@@ -48,7 +48,12 @@
             'api_request_tester/static/src/xml/api_guide_action.xml',
         ],
     },
+    'images': [
+        'static/description/banner.png',
+    ],
+    'price': 99.00,
+    'currency': 'EUR',
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',
+    'license': 'OPL-1',
 }
