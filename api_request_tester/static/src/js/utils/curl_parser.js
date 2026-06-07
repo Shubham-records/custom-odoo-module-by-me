@@ -19,12 +19,22 @@ export function parseCurl(curlStr) {
         bodyParams: [],
     };
 
-    // Simple tokenizer respecting quotes
+    // Simple tokenizer respecting quotes and escaped characters
     const tokens = [];
     let current = '';
     let inSingle = false, inDouble = false;
     for (let i = 0; i < cmd.length; i++) {
         const ch = cmd[i];
+        if (ch === '\\') {
+            if (i + 1 < cmd.length) {
+                const nextCh = cmd[i + 1];
+                if ((nextCh === '"' && inDouble) || (nextCh === "'" && inSingle) || nextCh === '\\') {
+                    current += nextCh;
+                    i++;
+                    continue;
+                }
+            }
+        }
         if (ch === "'" && !inDouble) { inSingle = !inSingle; continue; }
         if (ch === '"' && !inSingle) { inDouble = !inDouble; continue; }
         if (ch === ' ' && !inSingle && !inDouble) {
@@ -36,6 +46,7 @@ export function parseCurl(curlStr) {
     if (current) tokens.push(current);
 
     let i = 0;
+    const dataInputs = [];
     while (i < tokens.length) {
         const t = tokens[i];
         if ((t === '-X' || t === '--request') && tokens[i + 1]) {
@@ -51,46 +62,10 @@ export function parseCurl(curlStr) {
                 });
             }
         } else if ((t === '-d' || t === '--data' || t === '--data-raw' || t === '--data-binary') && tokens[i + 1]) {
-            result.body = tokens[++i];
+            dataInputs.push({ type: 'raw', value: tokens[++i] });
             if (result.method === 'GET') result.method = 'POST';
-            try {
-                JSON.parse(result.body);
-                result.bodyType = 'json';
-            } catch {
-                if (result.body.includes('=')) {
-                    result.bodyType = 'urlencoded';
-                    const pairs = result.body.split('&');
-                    for (const p of pairs) {
-                        const eqIdx = p.indexOf('=');
-                        if (eqIdx > 0) {
-                            result.bodyParams.push({
-                                key: p.slice(0, eqIdx).trim(),
-                                value: decodeURIComponent(p.slice(eqIdx + 1).trim()),
-                                enabled: true,
-                            });
-                        }
-                    }
-                } else {
-                    result.bodyType = 'raw';
-                }
-            }
         } else if (t === '--data-urlencode' && tokens[i + 1]) {
-            const val = tokens[++i];
-            const eqIdx = val.indexOf('=');
-            if (eqIdx > 0) {
-                result.bodyParams.push({
-                    key: val.slice(0, eqIdx).trim(),
-                    value: val.slice(eqIdx + 1).trim(),
-                    enabled: true,
-                });
-            } else {
-                result.bodyParams.push({
-                    key: val.trim(),
-                    value: '',
-                    enabled: true,
-                });
-            }
-            result.bodyType = 'urlencoded';
+            dataInputs.push({ type: 'urlencode', value: tokens[++i] });
             if (result.method === 'GET') result.method = 'POST';
         } else if ((t === '-F' || t === '--form') && tokens[i + 1]) {
             const formVal = tokens[++i];
@@ -116,8 +91,78 @@ export function parseCurl(curlStr) {
         i++;
     }
 
+    // Process collected data tokens in order
+    if (dataInputs.length > 0) {
+        if (dataInputs.length === 1 && dataInputs[0].type === 'raw') {
+            const val = dataInputs[0].value;
+            try {
+                JSON.parse(val);
+                result.body = val;
+                result.bodyType = 'json';
+            } catch {
+                if (val.includes('=')) {
+                    result.bodyType = 'urlencoded';
+                    const pairs = val.split('&');
+                    for (const p of pairs) {
+                        const eqIdx = p.indexOf('=');
+                        if (eqIdx > 0) {
+                            result.bodyParams.push({
+                                key: p.slice(0, eqIdx).trim(),
+                                value: decodeURIComponent(p.slice(eqIdx + 1).trim()),
+                                enabled: true,
+                            });
+                        }
+                    }
+                } else {
+                    result.body = val;
+                    result.bodyType = 'raw';
+                }
+            }
+        } else {
+            result.bodyType = 'urlencoded';
+            for (const input of dataInputs) {
+                if (input.type === 'urlencode') {
+                    const val = input.value;
+                    const eqIdx = val.indexOf('=');
+                    if (eqIdx > 0) {
+                        result.bodyParams.push({
+                            key: val.slice(0, eqIdx).trim(),
+                            value: val.slice(eqIdx + 1).trim(),
+                            enabled: true,
+                        });
+                    } else {
+                        result.bodyParams.push({
+                            key: val.trim(),
+                            value: '',
+                            enabled: true,
+                        });
+                    }
+                } else {
+                    const val = input.value;
+                    const pairs = val.split('&');
+                    for (const p of pairs) {
+                        const eqIdx = p.indexOf('=');
+                        if (eqIdx > 0) {
+                            result.bodyParams.push({
+                                key: p.slice(0, eqIdx).trim(),
+                                value: decodeURIComponent(p.slice(eqIdx + 1).trim()),
+                                enabled: true,
+                            });
+                        } else {
+                            result.bodyParams.push({
+                                key: p.trim(),
+                                value: '',
+                                enabled: true,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Build plain text body for urlencoded if it was parsed as params
-    if (result.bodyType === 'urlencoded' && result.bodyParams.length && !result.body) {
+    if (result.bodyType === 'urlencoded' && result.bodyParams.length) {
         result.body = result.bodyParams.map(p => `${p.key}=${encodeURIComponent(p.value)}`).join('&');
     }
 
