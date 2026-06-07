@@ -1,0 +1,156 @@
+<div class="container py-5" style="font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; color: #2c3e50;">
+    
+    <!-- Hero Section -->
+    <div class="row align-items-center mb-5 text-center text-md-left">
+        <div class="col-md-8">
+            <h1 class="display-4 font-weight-bold mb-2" style="color: #7c5dfa; font-size: 2.8rem;">API Request Tester</h1>
+            <h3 class="h4 font-weight-light text-muted mb-4">The Complete Postman Clone inside Odoo</h3>
+            <p class="lead" style="font-size: 1.15rem; line-height: 1.6;">
+                Need to test external APIs that only whitelist your staging or production server's IP address? 
+                Bypass local IP restrictions and debug directly from Odoo backend with a full-featured API client.
+            </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="icon.png" alt="API Request Tester Icon" class="img-fluid rounded" style="max-width: 150px; box-shadow: 0 10px 30px rgba(124, 93, 250, 0.15);">
+        </div>
+    </div>
+
+    <!-- The Problem & Solution Section -->
+    <div class="card border-0 mb-5" style="border-radius: 12px; background: #f8fafc; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+        <div class="card-body p-4 p-md-5">
+            <h2 class="text-center font-weight-bold mb-4" style="color: #0f172a;">Why build this? The "Whitelisted IP" Problem</h2>
+            <div class="row text-center mt-4">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <div class="p-4 rounded bg-white h-100" style="border: 1px solid #fee2e2;">
+                        <h4 class="text-danger font-weight-bold mb-3">❌ Traditional Way</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.95rem;">
+                            External APIs (government portals, banks, carriers) whitelist only your Odoo Server's static IP. 
+                            Your local Postman gets blocked (403 Forbidden). 
+                            You have to write raw scripts or use SSH to debug.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2 my-auto mb-4 mb-md-0">
+                    <span class="d-inline-block px-3 py-2 bg-primary text-white rounded-circle font-weight-bold" style="font-size: 1.2rem;">VS</span>
+                </div>
+                <div class="col-md-5">
+                    <div class="p-4 rounded bg-white h-100" style="border: 1px solid #e0e7ff; box-shadow: 0 10px 25px rgba(124,93,250,0.06);">
+                        <h4 class="text-success font-weight-bold mb-3">✅ The Odoo Way</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.95rem;">
+                            Run this module inside Odoo. 
+                            Requests are sent via Odoo's backend using Python's <code>requests</code>. 
+                            Calls automatically use the whitelisted server IP. You test instantly via a Postman-like GUI!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features Section -->
+    <div class="mb-5">
+        <h2 class="text-center font-weight-bold mb-5" style="color: #0f172a;">Key Capabilities & Features</h2>
+        
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-terminal"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Smart cURL Command Parsing</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Simply paste any cURL command directly into the URL bar. The app parses methods, headers, body variables, and parameters automatically.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-folder-open"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Collections & Folders Hierarchy</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Organize requests into neat nested folders and collections. Save requests to share setup configurations and environment keys with other developers or admins.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-6 mb-4">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-cogs"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Pre-Request Scripts & Assertions</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Run custom logic before making requests or set assertions to automatically validate response statuses, headers, and payload structures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="col-md-6 mb-4">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-key"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Bearer & Basic Authentication</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Supports API keys, Bearer tokens, and Basic auth configurations. Credentials are encrypted and securely loaded per environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-database"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Multiple Payload Types</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Test REST & GraphQL endpoints. Supports JSON body, urlencoded payloads, raw text, multipart form-data (file uploads), and custom GraphQL queries with variables.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="col-md-6">
+                <div class="d-flex p-3 bg-white border rounded h-100" style="border-radius: 8px;">
+                    <div class="mr-3 text-primary" style="font-size: 1.5rem;"><i class="fa fa-history"></i></div>
+                    <div>
+                        <h4 class="h5 font-weight-bold mb-2">Detailed History Logger</h4>
+                        <p class="text-muted mb-0" style="font-size: 0.9rem;">
+                            Tracks all sent requests with execution status, headers, and logs so that you can view previous results and load older setups instantly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Start/How to Use Section -->
+    <div class="card border-0 mb-5" style="border-radius: 12px; border: 1px solid #e2e8f0;">
+        <div class="card-body p-4 p-md-5">
+            <h3 class="font-weight-bold mb-4" style="color: #0f172a;">How to Use</h3>
+            <ol class="pl-3" style="line-height: 1.8; font-size: 1rem;">
+                <li class="mb-2">Install the module and open the **API Tester** client from Odoo Apps dashboard.</li>
+                <li class="mb-2">Create a new **Collection** or **Folder** in the sidebar to organize your endpoints.</li>
+                <li class="mb-2">Type your destination endpoint URL or paste a raw `cURL` command directly into the URL bar to auto-populate fields.</li>
+                <li class="mb-2">Configure Headers, Auth parameters, or payload Body details.</li>
+                <li class="mb-2">Click **Send** to dispatch requests via Odoo's backend and get a formatted response layout (JSON, HTML, Headers, status, assertion logs, etc.).</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Footer Support Section -->
+    <div class="text-center py-4 bg-light rounded" style="border: 1px solid #e2e8f0;">
+        <h4 class="font-weight-bold mb-2" style="color: #1e293b;">Need Support or Customizations?</h4>
+        <p class="text-muted mb-3">If you have questions, face issues, or need bespoke integrations, feel free to contact us.</p>
+        <a href="https://www.odiware.com" target="_blank" class="btn btn-primary px-4 py-2" style="background-color: #7c5dfa; border-color: #7c5dfa; border-radius: 6px; font-weight: 600;">Contact Developer</a>
+    </div>
+
+</div>
