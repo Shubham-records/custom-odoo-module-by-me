@@ -4,6 +4,8 @@ This document serves as the official operational guide and registry for publishi
 
 > [!IMPORTANT]
 > **Design Theme Policy**: All marketing description files (`index.html`) and app logos/icons (`icon.png`) **MUST always use a clean, professional White/Light Theme** (light-mode backgrounds, dark-contrast typography, and light/white backgrounds for app icons). Dark or neon-only themes are not permitted for store listing presentations.
+> * **Logo/Icon Dimensions**: The module logo (`icon.png`) must be a square image, ideally **`512x512 pixels`** (or at least **`150x150 pixels`**).
+> * **Logo Scaling & Margin**: The central graphic/artwork must fill **`100%`** of the square canvas (edge-to-edge design with no margins or white border padding, ensuring the logo displays at its maximum possible size on the Odoo Apps Store dashboard).
 
 ---
 
